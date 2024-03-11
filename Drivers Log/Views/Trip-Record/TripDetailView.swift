@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct TripDetailView: View {
+    
+    @State private var openLegendView: Bool = false
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -159,6 +162,9 @@ struct TripDetailView: View {
             
 
         }
+        .navigationDestination(isPresented: $openLegendView, destination: {
+            TripLegendView()
+        })
         .background(Color("app-background"))
         .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.inline)
