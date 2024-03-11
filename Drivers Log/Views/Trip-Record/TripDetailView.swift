@@ -143,7 +143,7 @@ struct TripDetailView: View {
                 }
                 
                 Button {
-                    
+                    openLegendView.toggle()
                 } label: {
                     HStack {
                         Text("View Legend")
