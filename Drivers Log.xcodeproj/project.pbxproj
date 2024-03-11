@@ -11,6 +11,12 @@
 		D57CD4C52B9EF60000D677E4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57CD4C42B9EF60000D677E4 /* ContentView.swift */; };
 		D57CD4C72B9EF60200D677E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D57CD4C62B9EF60200D677E4 /* Assets.xcassets */; };
 		D57CD4CA2B9EF60200D677E4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D57CD4C92B9EF60200D677E4 /* Preview Assets.xcassets */; };
+		D57CD4D22B9EF77A00D677E4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57CD4D12B9EF77A00D677E4 /* HomeView.swift */; };
+		D57CD4D42B9EF7E300D677E4 /* NewTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57CD4D32B9EF7E300D677E4 /* NewTripView.swift */; };
+		D57CD4D62B9EF81C00D677E4 /* MyTripsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57CD4D52B9EF81C00D677E4 /* MyTripsView.swift */; };
+		D57CD4D92B9EFDD100D677E4 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57CD4D82B9EFDD100D677E4 /* BackButton.swift */; };
+		D57CD4DB2B9EFFD000D677E4 /* TripsRecordRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57CD4DA2B9EFFD000D677E4 /* TripsRecordRowView.swift */; };
+		D57CD4DD2B9F053A00D677E4 /* TripDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57CD4DC2B9F053A00D677E4 /* TripDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +25,12 @@
 		D57CD4C42B9EF60000D677E4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D57CD4C62B9EF60200D677E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D57CD4C92B9EF60200D677E4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D57CD4D12B9EF77A00D677E4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		D57CD4D32B9EF7E300D677E4 /* NewTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTripView.swift; sourceTree = "<group>"; };
+		D57CD4D52B9EF81C00D677E4 /* MyTripsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTripsView.swift; sourceTree = "<group>"; };
+		D57CD4D82B9EFDD100D677E4 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
+		D57CD4DA2B9EFFD000D677E4 /* TripsRecordRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsRecordRowView.swift; sourceTree = "<group>"; };
+		D57CD4DC2B9F053A00D677E4 /* TripDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +63,8 @@
 		D57CD4C12B9EF60000D677E4 /* Drivers Log */ = {
 			isa = PBXGroup;
 			children = (
+				D57CD4D72B9EFDA700D677E4 /* Custom-Widgets */,
+				D57CD4D02B9EF6DB00D677E4 /* Views */,
 				D57CD4C22B9EF60000D677E4 /* Drivers_LogApp.swift */,
 				D57CD4C42B9EF60000D677E4 /* ContentView.swift */,
 				D57CD4C62B9EF60200D677E4 /* Assets.xcassets */,
@@ -65,6 +79,34 @@
 				D57CD4C92B9EF60200D677E4 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D57CD4D02B9EF6DB00D677E4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D57CD4DE2B9F0D5000D677E4 /* Trip-Record */,
+				D57CD4D12B9EF77A00D677E4 /* HomeView.swift */,
+				D57CD4D32B9EF7E300D677E4 /* NewTripView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D57CD4D72B9EFDA700D677E4 /* Custom-Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				D57CD4D82B9EFDD100D677E4 /* BackButton.swift */,
+			);
+			path = "Custom-Widgets";
+			sourceTree = "<group>";
+		};
+		D57CD4DE2B9F0D5000D677E4 /* Trip-Record */ = {
+			isa = PBXGroup;
+			children = (
+				D57CD4DC2B9F053A00D677E4 /* TripDetailView.swift */,
+				D57CD4DA2B9EFFD000D677E4 /* TripsRecordRowView.swift */,
+				D57CD4D52B9EF81C00D677E4 /* MyTripsView.swift */,
+			);
+			path = "Trip-Record";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +179,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D57CD4D42B9EF7E300D677E4 /* NewTripView.swift in Sources */,
+				D57CD4D22B9EF77A00D677E4 /* HomeView.swift in Sources */,
+				D57CD4D92B9EFDD100D677E4 /* BackButton.swift in Sources */,
+				D57CD4DB2B9EFFD000D677E4 /* TripsRecordRowView.swift in Sources */,
+				D57CD4DD2B9F053A00D677E4 /* TripDetailView.swift in Sources */,
 				D57CD4C52B9EF60000D677E4 /* ContentView.swift in Sources */,
+				D57CD4D62B9EF81C00D677E4 /* MyTripsView.swift in Sources */,
 				D57CD4C32B9EF60000D677E4 /* Drivers_LogApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
