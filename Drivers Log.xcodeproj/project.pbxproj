@@ -18,9 +18,29 @@
 		D57CD4DB2B9EFFD000D677E4 /* TripsRecordRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57CD4DA2B9EFFD000D677E4 /* TripsRecordRowView.swift */; };
 		D57CD4DD2B9F053A00D677E4 /* TripDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57CD4DC2B9F053A00D677E4 /* TripDetailView.swift */; };
 		D57CD4E02B9F0E8000D677E4 /* TripLegendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57CD4DF2B9F0E8000D677E4 /* TripLegendView.swift */; };
+		D5BB06E72BBAEBC400C0DE5D /* GoogleMaps in Frameworks */ = {isa = PBXBuildFile; productRef = D5BB06E62BBAEBC400C0DE5D /* GoogleMaps */; };
+		D5BB06E92BBAEBC400C0DE5D /* GoogleMapsBase in Frameworks */ = {isa = PBXBuildFile; productRef = D5BB06E82BBAEBC400C0DE5D /* GoogleMapsBase */; };
+		D5BB06EB2BBAEBC400C0DE5D /* GoogleMapsCore in Frameworks */ = {isa = PBXBuildFile; productRef = D5BB06EA2BBAEBC400C0DE5D /* GoogleMapsCore */; };
+		D5BB06ED2BBAEBC400C0DE5D /* GoogleMapsM4B in Frameworks */ = {isa = PBXBuildFile; productRef = D5BB06EC2BBAEBC400C0DE5D /* GoogleMapsM4B */; };
+		D5C7A33B2BBCDFB500FCAF36 /* GooglePlaces in Frameworks */ = {isa = PBXBuildFile; productRef = D5C7A33A2BBCDFB500FCAF36 /* GooglePlaces */; };
+		D5C7A33D2BBCE08E00FCAF36 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C7A33C2BBCE08E00FCAF36 /* MapView.swift */; };
+		D5C7A33F2BBCE74A00FCAF36 /* DriverRouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C7A33E2BBCE74A00FCAF36 /* DriverRouteView.swift */; };
+		D5C7A3422BBD700D00FCAF36 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C7A3412BBD700D00FCAF36 /* LoginView.swift */; };
+		D5C7A3462BBD708400FCAF36 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C7A3452BBD708400FCAF36 /* SessionManager.swift */; };
+		D5C7A3492BBD715800FCAF36 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D5C7A3482BBD715800FCAF36 /* FirebaseAnalytics */; };
+		D5C7A34B2BBD715800FCAF36 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = D5C7A34A2BBD715800FCAF36 /* FirebaseAnalyticsOnDeviceConversion */; };
+		D5C7A34D2BBD715800FCAF36 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D5C7A34C2BBD715800FCAF36 /* FirebaseAnalyticsSwift */; };
+		D5C7A34F2BBD715800FCAF36 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = D5C7A34E2BBD715800FCAF36 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		D5C7A3512BBD715800FCAF36 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = D5C7A3502BBD715800FCAF36 /* FirebaseAppCheck */; };
+		D5C7A3532BBD715800FCAF36 /* FirebaseAppDistribution-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = D5C7A3522BBD715800FCAF36 /* FirebaseAppDistribution-Beta */; };
+		D5C7A3562BBD718200FCAF36 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D5C7A3552BBD718200FCAF36 /* FirebaseAuth */; };
+		D5C7A3582BBD718D00FCAF36 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D5C7A3572BBD718D00FCAF36 /* FirebaseFirestore */; };
+		D5C7A35A2BBD73D700FCAF36 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5C7A3592BBD73D700FCAF36 /* GoogleService-Info.plist */; };
+		D5C7A35C2BBD845D00FCAF36 /* VerifyOTPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C7A35B2BBD845D00FCAF36 /* VerifyOTPView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D5052B762BB5CA50007552BB /* Drivers-Log-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Drivers-Log-Info.plist"; sourceTree = SOURCE_ROOT; };
 		D57CD4BF2B9EF60000D677E4 /* Drivers Log.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Drivers Log.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D57CD4C22B9EF60000D677E4 /* Drivers_LogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drivers_LogApp.swift; sourceTree = "<group>"; };
 		D57CD4C42B9EF60000D677E4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -33,6 +53,14 @@
 		D57CD4DA2B9EFFD000D677E4 /* TripsRecordRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsRecordRowView.swift; sourceTree = "<group>"; };
 		D57CD4DC2B9F053A00D677E4 /* TripDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailView.swift; sourceTree = "<group>"; };
 		D57CD4DF2B9F0E8000D677E4 /* TripLegendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripLegendView.swift; sourceTree = "<group>"; };
+		D5C7A33C2BBCE08E00FCAF36 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		D5C7A33E2BBCE74A00FCAF36 /* DriverRouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverRouteView.swift; sourceTree = "<group>"; };
+		D5C7A3412BBD700D00FCAF36 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		D5C7A3452BBD708400FCAF36 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		D5C7A3592BBD73D700FCAF36 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D5C7A35B2BBD845D00FCAF36 /* VerifyOTPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOTPView.swift; sourceTree = "<group>"; };
+		D5C7A35D2BBD871700FCAF36 /* Drivers Log.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Drivers Log.entitlements"; sourceTree = "<group>"; };
+		D5C7A3612BBDFCFD00FCAF36 /* TestingLocation.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TestingLocation.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,17 +68,48 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5BB06E72BBAEBC400C0DE5D /* GoogleMaps in Frameworks */,
+				D5C7A3582BBD718D00FCAF36 /* FirebaseFirestore in Frameworks */,
+				D5BB06EB2BBAEBC400C0DE5D /* GoogleMapsCore in Frameworks */,
+				D5C7A3492BBD715800FCAF36 /* FirebaseAnalytics in Frameworks */,
+				D5C7A34B2BBD715800FCAF36 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
+				D5C7A34D2BBD715800FCAF36 /* FirebaseAnalyticsSwift in Frameworks */,
+				D5BB06ED2BBAEBC400C0DE5D /* GoogleMapsM4B in Frameworks */,
+				D5C7A33B2BBCDFB500FCAF36 /* GooglePlaces in Frameworks */,
+				D5C7A3562BBD718200FCAF36 /* FirebaseAuth in Frameworks */,
+				D5C7A34F2BBD715800FCAF36 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				D5C7A3512BBD715800FCAF36 /* FirebaseAppCheck in Frameworks */,
+				D5C7A3532BBD715800FCAF36 /* FirebaseAppDistribution-Beta in Frameworks */,
+				D5BB06E92BBAEBC400C0DE5D /* GoogleMapsBase in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D5052B772BB5CA70007552BB /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				D5C7A33C2BBCE08E00FCAF36 /* MapView.swift */,
+				D5C7A33E2BBCE74A00FCAF36 /* DriverRouteView.swift */,
+			);
+			path = Maps;
+			sourceTree = "<group>";
+		};
+		D5052B7A2BB5CAD3007552BB /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D5C7A3452BBD708400FCAF36 /* SessionManager.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		D57CD4B62B9EF60000D677E4 = {
 			isa = PBXGroup;
 			children = (
 				D57CD4C12B9EF60000D677E4 /* Drivers Log */,
 				D57CD4C02B9EF60000D677E4 /* Products */,
+				D5C7A3542BBD718200FCAF36 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,7 +124,11 @@
 		D57CD4C12B9EF60000D677E4 /* Drivers Log */ = {
 			isa = PBXGroup;
 			children = (
-				D57CD4D72B9EFDA700D677E4 /* Custom-Widgets */,
+				D5C7A35D2BBD871700FCAF36 /* Drivers Log.entitlements */,
+				D5C7A3592BBD73D700FCAF36 /* GoogleService-Info.plist */,
+				D5052B7A2BB5CAD3007552BB /* ViewModels */,
+				D5052B762BB5CA50007552BB /* Drivers-Log-Info.plist */,
+				D57CD4D72B9EFDA700D677E4 /* HelperClasses */,
 				D57CD4D02B9EF6DB00D677E4 /* Views */,
 				D57CD4C22B9EF60000D677E4 /* Drivers_LogApp.swift */,
 				D57CD4C42B9EF60000D677E4 /* ContentView.swift */,
@@ -86,22 +149,25 @@
 		D57CD4D02B9EF6DB00D677E4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D57CD4DE2B9F0D5000D677E4 /* Trip-Record */,
+				D5C7A3402BBD6FFF00FCAF36 /* Authentication */,
+				D5052B772BB5CA70007552BB /* Maps */,
+				D57CD4E12B9F33CC00D677E4 /* StartTrip */,
+				D57CD4DE2B9F0D5000D677E4 /* TripRecord */,
 				D57CD4D12B9EF77A00D677E4 /* HomeView.swift */,
-				D57CD4D32B9EF7E300D677E4 /* NewTripView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		D57CD4D72B9EFDA700D677E4 /* Custom-Widgets */ = {
+		D57CD4D72B9EFDA700D677E4 /* HelperClasses */ = {
 			isa = PBXGroup;
 			children = (
 				D57CD4D82B9EFDD100D677E4 /* BackButton.swift */,
+				D5C7A3612BBDFCFD00FCAF36 /* TestingLocation.gpx */,
 			);
-			path = "Custom-Widgets";
+			path = HelperClasses;
 			sourceTree = "<group>";
 		};
-		D57CD4DE2B9F0D5000D677E4 /* Trip-Record */ = {
+		D57CD4DE2B9F0D5000D677E4 /* TripRecord */ = {
 			isa = PBXGroup;
 			children = (
 				D57CD4DC2B9F053A00D677E4 /* TripDetailView.swift */,
@@ -109,7 +175,31 @@
 				D57CD4D52B9EF81C00D677E4 /* MyTripsView.swift */,
 				D57CD4DF2B9F0E8000D677E4 /* TripLegendView.swift */,
 			);
-			path = "Trip-Record";
+			path = TripRecord;
+			sourceTree = "<group>";
+		};
+		D57CD4E12B9F33CC00D677E4 /* StartTrip */ = {
+			isa = PBXGroup;
+			children = (
+				D57CD4D32B9EF7E300D677E4 /* NewTripView.swift */,
+			);
+			path = StartTrip;
+			sourceTree = "<group>";
+		};
+		D5C7A3402BBD6FFF00FCAF36 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				D5C7A3412BBD700D00FCAF36 /* LoginView.swift */,
+				D5C7A35B2BBD845D00FCAF36 /* VerifyOTPView.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		D5C7A3542BBD718200FCAF36 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +218,21 @@
 			dependencies = (
 			);
 			name = "Drivers Log";
+			packageProductDependencies = (
+				D5BB06E62BBAEBC400C0DE5D /* GoogleMaps */,
+				D5BB06E82BBAEBC400C0DE5D /* GoogleMapsBase */,
+				D5BB06EA2BBAEBC400C0DE5D /* GoogleMapsCore */,
+				D5BB06EC2BBAEBC400C0DE5D /* GoogleMapsM4B */,
+				D5C7A33A2BBCDFB500FCAF36 /* GooglePlaces */,
+				D5C7A3482BBD715800FCAF36 /* FirebaseAnalytics */,
+				D5C7A34A2BBD715800FCAF36 /* FirebaseAnalyticsOnDeviceConversion */,
+				D5C7A34C2BBD715800FCAF36 /* FirebaseAnalyticsSwift */,
+				D5C7A34E2BBD715800FCAF36 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				D5C7A3502BBD715800FCAF36 /* FirebaseAppCheck */,
+				D5C7A3522BBD715800FCAF36 /* FirebaseAppDistribution-Beta */,
+				D5C7A3552BBD718200FCAF36 /* FirebaseAuth */,
+				D5C7A3572BBD718D00FCAF36 /* FirebaseFirestore */,
+			);
 			productName = "Drivers Log";
 			productReference = D57CD4BF2B9EF60000D677E4 /* Drivers Log.app */;
 			productType = "com.apple.product-type.application";
@@ -156,6 +261,11 @@
 				Base,
 			);
 			mainGroup = D57CD4B62B9EF60000D677E4;
+			packageReferences = (
+				D5BB06E52BBAEBC400C0DE5D /* XCRemoteSwiftPackageReference "ios-maps-sdk" */,
+				D5C7A3392BBCDFB500FCAF36 /* XCRemoteSwiftPackageReference "ios-places-sdk" */,
+				D5C7A3472BBD715800FCAF36 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = D57CD4C02B9EF60000D677E4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -172,6 +282,7 @@
 			files = (
 				D57CD4CA2B9EF60200D677E4 /* Preview Assets.xcassets in Resources */,
 				D57CD4C72B9EF60200D677E4 /* Assets.xcassets in Resources */,
+				D5C7A35A2BBD73D700FCAF36 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,10 +298,15 @@
 				D57CD4D92B9EFDD100D677E4 /* BackButton.swift in Sources */,
 				D57CD4E02B9F0E8000D677E4 /* TripLegendView.swift in Sources */,
 				D57CD4DB2B9EFFD000D677E4 /* TripsRecordRowView.swift in Sources */,
+				D5C7A3462BBD708400FCAF36 /* SessionManager.swift in Sources */,
 				D57CD4DD2B9F053A00D677E4 /* TripDetailView.swift in Sources */,
+				D5C7A3422BBD700D00FCAF36 /* LoginView.swift in Sources */,
 				D57CD4C52B9EF60000D677E4 /* ContentView.swift in Sources */,
+				D5C7A33D2BBCE08E00FCAF36 /* MapView.swift in Sources */,
 				D57CD4D62B9EF81C00D677E4 /* MyTripsView.swift in Sources */,
+				D5C7A35C2BBD845D00FCAF36 /* VerifyOTPView.swift in Sources */,
 				D57CD4C32B9EF60000D677E4 /* Drivers_LogApp.swift in Sources */,
+				D5C7A33F2BBCE74A00FCAF36 /* DriverRouteView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,12 +437,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Drivers Log/Drivers Log.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Drivers Log/Preview Content\"";
-				DEVELOPMENT_TEAM = N3UZ6NV4QG;
+				DEVELOPMENT_TEAM = 36LA7K6V94;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Drivers-Log-Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "It wants to access your location";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "It wants to access your location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "It wants to access your location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -337,8 +459,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "thefreelancers.Drivers-Log";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jasonpeters.driverslog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -350,12 +473,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = "Drivers Log/Drivers Log.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Distribution: Jason PETERS (36LA7K6V94)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Distribution: Jason PETERS (36LA7K6V94)";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Drivers Log/Preview Content\"";
-				DEVELOPMENT_TEAM = N3UZ6NV4QG;
+				DEVELOPMENT_TEAM = 36LA7K6V94;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 36LA7K6V94;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Drivers-Log-Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "It wants to access your location";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "It wants to access your location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "It wants to access your location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -366,8 +497,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "thefreelancers.Drivers-Log";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jasonpeters.driverslog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = JPDistribution;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = JPDistribution;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -396,6 +529,101 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D5BB06E52BBAEBC400C0DE5D /* XCRemoteSwiftPackageReference "ios-maps-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googlemaps/ios-maps-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.4.0;
+			};
+		};
+		D5C7A3392BBCDFB500FCAF36 /* XCRemoteSwiftPackageReference "ios-places-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googlemaps/ios-places-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.5.0;
+			};
+		};
+		D5C7A3472BBD715800FCAF36 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.23.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D5BB06E62BBAEBC400C0DE5D /* GoogleMaps */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5BB06E52BBAEBC400C0DE5D /* XCRemoteSwiftPackageReference "ios-maps-sdk" */;
+			productName = GoogleMaps;
+		};
+		D5BB06E82BBAEBC400C0DE5D /* GoogleMapsBase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5BB06E52BBAEBC400C0DE5D /* XCRemoteSwiftPackageReference "ios-maps-sdk" */;
+			productName = GoogleMapsBase;
+		};
+		D5BB06EA2BBAEBC400C0DE5D /* GoogleMapsCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5BB06E52BBAEBC400C0DE5D /* XCRemoteSwiftPackageReference "ios-maps-sdk" */;
+			productName = GoogleMapsCore;
+		};
+		D5BB06EC2BBAEBC400C0DE5D /* GoogleMapsM4B */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5BB06E52BBAEBC400C0DE5D /* XCRemoteSwiftPackageReference "ios-maps-sdk" */;
+			productName = GoogleMapsM4B;
+		};
+		D5C7A33A2BBCDFB500FCAF36 /* GooglePlaces */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5C7A3392BBCDFB500FCAF36 /* XCRemoteSwiftPackageReference "ios-places-sdk" */;
+			productName = GooglePlaces;
+		};
+		D5C7A3482BBD715800FCAF36 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5C7A3472BBD715800FCAF36 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		D5C7A34A2BBD715800FCAF36 /* FirebaseAnalyticsOnDeviceConversion */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5C7A3472BBD715800FCAF36 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsOnDeviceConversion;
+		};
+		D5C7A34C2BBD715800FCAF36 /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5C7A3472BBD715800FCAF36 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		D5C7A34E2BBD715800FCAF36 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5C7A3472BBD715800FCAF36 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		D5C7A3502BBD715800FCAF36 /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5C7A3472BBD715800FCAF36 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
+		};
+		D5C7A3522BBD715800FCAF36 /* FirebaseAppDistribution-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5C7A3472BBD715800FCAF36 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseAppDistribution-Beta";
+		};
+		D5C7A3552BBD718200FCAF36 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5C7A3472BBD715800FCAF36 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		D5C7A3572BBD718D00FCAF36 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5C7A3472BBD715800FCAF36 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D57CD4B72B9EF60000D677E4 /* Project object */;
 }

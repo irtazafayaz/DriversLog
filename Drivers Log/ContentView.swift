@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @ObservedObject var sessionManager = SessionManager()
+
     var body: some View {
-        HomeView()
+        LoginView()
     }
 }
 
