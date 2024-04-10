@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D5684CF22BC56842000236C6 /* TripDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5684CF12BC56842000236C6 /* TripDetailVM.swift */; };
 		D5684CF42BC5701F000236C6 /* ViewRouteMapRep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5684CF32BC5701F000236C6 /* ViewRouteMapRep.swift */; };
+		D5684CF62BC74B5A000236C6 /* ViewRouteMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5684CF52BC74B5A000236C6 /* ViewRouteMap.swift */; };
 		D57CD4C32B9EF60000D677E4 /* Drivers_LogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57CD4C22B9EF60000D677E4 /* Drivers_LogApp.swift */; };
 		D57CD4C52B9EF60000D677E4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57CD4C42B9EF60000D677E4 /* ContentView.swift */; };
 		D57CD4C72B9EF60200D677E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D57CD4C62B9EF60200D677E4 /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 		D5052B762BB5CA50007552BB /* Drivers-Log-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Drivers-Log-Info.plist"; sourceTree = SOURCE_ROOT; };
 		D5684CF12BC56842000236C6 /* TripDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailVM.swift; sourceTree = "<group>"; };
 		D5684CF32BC5701F000236C6 /* ViewRouteMapRep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouteMapRep.swift; sourceTree = "<group>"; };
+		D5684CF52BC74B5A000236C6 /* ViewRouteMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouteMap.swift; sourceTree = "<group>"; };
 		D57CD4BF2B9EF60000D677E4 /* Drivers Log.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Drivers Log.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D57CD4C22B9EF60000D677E4 /* Drivers_LogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drivers_LogApp.swift; sourceTree = "<group>"; };
 		D57CD4C42B9EF60000D677E4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				D5C7A33E2BBCE74A00FCAF36 /* DriverRouteView.swift */,
 				D5E984392BC49B8D007B0BC2 /* MapCoordinator.swift */,
 				D5684CF32BC5701F000236C6 /* ViewRouteMapRep.swift */,
+				D5684CF52BC74B5A000236C6 /* ViewRouteMap.swift */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				D5C7A33D2BBCE08E00FCAF36 /* MapView.swift in Sources */,
 				D57CD4D62B9EF81C00D677E4 /* MyTripsView.swift in Sources */,
 				D5C7A35C2BBD845D00FCAF36 /* VerifyOTPView.swift in Sources */,
+				D5684CF62BC74B5A000236C6 /* ViewRouteMap.swift in Sources */,
 				D5E9843D2BC4A271007B0BC2 /* DriverRouteModel.swift in Sources */,
 				D57CD4C32B9EF60000D677E4 /* Drivers_LogApp.swift in Sources */,
 				D5C7A33F2BBCE74A00FCAF36 /* DriverRouteView.swift in Sources */,

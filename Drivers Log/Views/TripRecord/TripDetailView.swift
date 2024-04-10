@@ -6,11 +6,17 @@
 //
 
 import SwiftUI
+import GoogleMaps
 
 struct TripDetailView: View {
     
     @State private var openLegendView: Bool = false
+    @State private var showMapView: Bool = false // State to control map view presentation
+
     private let selectedTrip: TripItem
+    
+    // Assuming you have a GoogleMapsView or similar that can take an array of CLLocationCoordinate2D
+
     
     init(selectedTrip: TripItem) {
         self.selectedTrip = selectedTrip
@@ -128,7 +134,7 @@ struct TripDetailView: View {
             
             VStack(spacing: 10) {
                 Button {
-                    // TODO:
+                    showMapView = true
                 } label: {
                     HStack {
                         Text("View Route")
@@ -161,6 +167,11 @@ struct TripDetailView: View {
         .navigationDestination(isPresented: $openLegendView, destination: {
             TripLegendView()
         })
+        .navigationDestination(isPresented: $showMapView, destination: {
+            if let coordinates = selectedTrip.pathPoints?.map({ CLLocationCoordinate2D(latitude: Double($0.latitude) ?? 0.0, longitude: Double($0.longitude) ?? 0.0) }) {
+                ViewRouteMap(coordinates: coordinates)
+            }
+        })
         .background(Color("app-background"))
         .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.inline)
@@ -177,3 +188,4 @@ struct TripDetailView: View {
         }
     }
 }
+
