@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseFirestore
 
-struct PathModel: Codable {
+struct CoordinatesModel: Codable {
     let latitude: String
     let longitude: String
 }
@@ -24,6 +24,6 @@ struct TripItem: Identifiable, Codable {
     var endTime: String="12:00:00"
     var duration: String="12:60:60"
     var tripDate: String = "16 Dec,2024"
-    var pathPoints: [PathModel]?
+    var pathPoints: [CoordinatesModel]?
     var dayOrNight: String = "Day"
 }

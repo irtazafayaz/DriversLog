@@ -11,13 +11,11 @@ import GoogleMaps
 struct TripDetailView: View {
     
     @State private var openLegendView: Bool = false
-    @State private var showMapView: Bool = false // State to control map view presentation
-
+    @State private var showMapView: Bool = false
+    @ObservedObject private var findAddressVM: FindAddressManager = FindAddressManager()
+    
     private let selectedTrip: TripItem
-    
-    // Assuming you have a GoogleMapsView or similar that can take an array of CLLocationCoordinate2D
 
-    
     init(selectedTrip: TripItem) {
         self.selectedTrip = selectedTrip
     }
@@ -52,11 +50,11 @@ struct TripDetailView: View {
                 }
                 
                 VStack(alignment: .leading) {
-                    Text("Churchil SHopping Center,\nChurchil SHopping Center")
+                    Text("\(findAddressVM.startAddress)")
                     Text("\(selectedTrip.startTime)")
                         .foregroundStyle(.gray)
                     
-                    Text("Churchil SHopping Center,\nChurchil SHopping Center")
+                    Text("\(findAddressVM.endAddress)")
                         .padding(.top, 10)
                     Text("\(selectedTrip.endTime)")
                         .foregroundStyle(.gray)
@@ -163,6 +161,9 @@ struct TripDetailView: View {
             }
             .frame(maxWidth: .infinity)
 
+        }
+        .onAppear {
+            findAddressVM.fetchAddresses(for: selectedTrip)
         }
         .navigationDestination(isPresented: $openLegendView, destination: {
             TripLegendView()

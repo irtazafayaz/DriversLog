@@ -12,25 +12,18 @@ import SwiftUI
 struct GoogleMapsView: UIViewRepresentable {
     var coordinates: [CLLocationCoordinate2D]
 
-    // Create a GMSMapView and configure it
     func makeUIView(context: Context) -> GMSMapView {
-        let mapView = GMSMapView(frame: .zero)
-        // Assuming coordinates are not empty, set the camera to the first coordinate
+        let mapView = GMSMapView()
         if let first = coordinates.first {
             mapView.camera = GMSCameraPosition.camera(withLatitude: first.latitude, longitude: first.longitude, zoom: 15.0)
         }
         
-        // Draw the route
         drawPath(on: mapView)
-        
         return mapView
     }
 
-    func updateUIView(_ uiView: GMSMapView, context: Context) {
-        // Update the view if needed
-    }
+    func updateUIView(_ uiView: GMSMapView, context: Context) {}
 
-    // Function to draw the path on the map
     private func drawPath(on mapView: GMSMapView) {
         guard coordinates.count > 1 else { return }
         

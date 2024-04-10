@@ -77,9 +77,8 @@ class MapCoordinator: NSObject, CLLocationManagerDelegate {
     func saveDrivingSessionToFirebase() {
         let endTime = Date()
         
-        // Convert locations to PathModel instances
-        let pathPoints: [PathModel] = locationsArray.map { location in
-            return PathModel(latitude: "\(location.coordinate.latitude)", longitude: "\(location.coordinate.longitude)")
+        let pathPoints: [CoordinatesModel] = locationsArray.map { location in
+            return CoordinatesModel(latitude: "\(location.coordinate.latitude)", longitude: "\(location.coordinate.longitude)")
         }
         
         // Format start and end times
