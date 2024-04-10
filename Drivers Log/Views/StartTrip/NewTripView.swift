@@ -11,7 +11,8 @@ struct NewTripView: View {
     
     @State private var supervisorPermitText: String = ""
     @State private var supervisorMobileNo: String = ""
-
+    @State private var startTripButtonTapped: Bool = false
+    
     var body: some View {
         VStack {
             
@@ -34,7 +35,7 @@ struct NewTripView: View {
                 .frame(maxWidth: .infinity, minHeight: 50)
 
             Button {
-                
+                startTripButtonTapped.toggle()
             } label: {
                 Text("Send OTP")
                     .foregroundStyle(.white)
@@ -48,6 +49,9 @@ struct NewTripView: View {
             Spacer()
             
         }
+        .navigationDestination(isPresented: $startTripButtonTapped, destination: {
+            DriverRouteView()
+        })
         .padding()
         .background(Color("app-background"))
         .navigationBarBackButtonHidden(true)

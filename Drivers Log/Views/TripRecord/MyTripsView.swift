@@ -10,21 +10,31 @@ import SwiftUI
 struct MyTripsView: View {
     
     @State private var opentripDetailPage: Bool = false
+    @State private var selectedTrip: TripItem?
+
+    @ObservedObject private var viewModel = TripDetailVM()
+    @EnvironmentObject var sessionManager: SessionManager
     
     var body: some View {
         ScrollView {
             VStack {
                 VStack {
-                    ForEach(0...10, id: \.self) { index in
-                        TripsRecordRowView()
+                    ForEach(viewModel.trips, id: \.id) { trip in
+                        TripsRecordRowView(trip: trip)
                             .onTapGesture {
+                                selectedTrip = trip
                                 opentripDetailPage.toggle()
                             }
                     }
                 }
+                Spacer()
             }
-            .navigationDestination(isPresented: $opentripDetailPage, destination: { TripDetailView()
+            .navigationDestination(isPresented: $opentripDetailPage, destination: { 
+                if let trip = selectedTrip { TripDetailView(selectedTrip: trip) }
             })
+            .onAppear {
+                viewModel.fetchTrips(sessionManager.getCurrentAuthUser()?.uid ?? "NaN")
+            }
         }
         .background(Color("app-background"))
         .navigationBarBackButtonHidden(true)

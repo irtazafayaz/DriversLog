@@ -9,6 +9,8 @@ import SwiftUI
 
 struct TripsRecordRowView: View {
     
+    let trip: TripItem
+    
     var body: some View {
         VStack {
             HStack {
@@ -17,19 +19,19 @@ struct TripsRecordRowView: View {
                     .font(.title)
                 
                 VStack(alignment: .leading) {
-                    Text("Trip# 12")
+                    Text(trip.tripTitle)
                         .bold()
                     HStack {
-                        Text("0:00:13")
+                        Text("\(trip.duration)")
                         Text("|")
-                        Text("0 KM")
+                        Text("\(trip.tripTotalDistance) KM")
                     }
                 }
                 .padding(.leading, 10)
                 
                 Spacer()
                 
-                Text("Dec 19, 2020")
+                Text("\(trip.tripDate)")
                 
             }
             .padding()
@@ -38,8 +40,4 @@ struct TripsRecordRowView: View {
         }
     }
     
-}
-
-#Preview {
-    TripsRecordRowView()
 }

@@ -12,7 +12,8 @@ struct VerifyOTPView: View {
     
     @Binding var uid: String
     @State private var code: String = ""
-
+    @EnvironmentObject var sessionManager: SessionManager
+    
     var body: some View {
         VStack {
             
@@ -38,7 +39,7 @@ struct VerifyOTPView: View {
                         print("wrong code")
                     } else {
                         print("res \(res)")
-                        
+                        sessionManager.authState = .home
                     }
                 }
                 

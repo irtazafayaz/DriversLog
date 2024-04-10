@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    @EnvironmentObject var sesssionManager: SessionManager
+    
     var body: some View {
         NavigationStack {
             VStack(spacing: 20) {
@@ -47,7 +50,7 @@ struct HomeView: View {
                 }
                 
                 Button {
-                    
+                    sesssionManager.logout()
                 } label: {
                     Text("Exit App")
                         .foregroundStyle(.white)

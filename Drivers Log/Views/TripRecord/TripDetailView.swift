@@ -10,6 +10,11 @@ import SwiftUI
 struct TripDetailView: View {
     
     @State private var openLegendView: Bool = false
+    private let selectedTrip: TripItem
+    
+    init(selectedTrip: TripItem) {
+        self.selectedTrip = selectedTrip
+    }
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -18,7 +23,7 @@ struct TripDetailView: View {
                 
                 Image(systemName: "moon.fill")
                     .font(.title)
-                Text("Dec 19, 2020")
+                Text("\(selectedTrip.tripDate)")
             }
             .padding()
             
@@ -42,12 +47,12 @@ struct TripDetailView: View {
                 
                 VStack(alignment: .leading) {
                     Text("Churchil SHopping Center,\nChurchil SHopping Center")
-                    Text("08:06 PM")
+                    Text("\(selectedTrip.startTime)")
                         .foregroundStyle(.gray)
                     
                     Text("Churchil SHopping Center,\nChurchil SHopping Center")
                         .padding(.top, 10)
-                    Text("08:06 PM")
+                    Text("\(selectedTrip.endTime)")
                         .foregroundStyle(.gray)
                     
                 }
@@ -68,14 +73,8 @@ struct TripDetailView: View {
                     HStack {
                         Text("Duration:")
                             .bold()
-                        Text("0:55:50")
+                        Text("\(selectedTrip.duration)")
                     }
-                    HStack {
-                        Text("Duration:")
-                            .bold()
-                        Text("0:55:50")
-                    }
-                    
                 }
                 .padding(.leading, 20)
                 
@@ -84,7 +83,7 @@ struct TripDetailView: View {
             
             Divider()
 
-            //MARK: Dont know
+            //MARK: TODO
             
             HStack {
                 Text("S")
@@ -129,7 +128,7 @@ struct TripDetailView: View {
             
             VStack(spacing: 10) {
                 Button {
-                    
+                    // TODO:
                 } label: {
                     HStack {
                         Text("View Route")
@@ -157,9 +156,6 @@ struct TripDetailView: View {
                 }
             }
             .frame(maxWidth: .infinity)
-            
-
-            
 
         }
         .navigationDestination(isPresented: $openLegendView, destination: {
@@ -180,8 +176,4 @@ struct TripDetailView: View {
             })
         }
     }
-}
-
-#Preview {
-    TripDetailView()
 }

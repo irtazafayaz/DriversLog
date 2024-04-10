@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D5684CF22BC56842000236C6 /* TripDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5684CF12BC56842000236C6 /* TripDetailVM.swift */; };
+		D5684CF42BC5701F000236C6 /* ViewRouteMapRep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5684CF32BC5701F000236C6 /* ViewRouteMapRep.swift */; };
 		D57CD4C32B9EF60000D677E4 /* Drivers_LogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57CD4C22B9EF60000D677E4 /* Drivers_LogApp.swift */; };
 		D57CD4C52B9EF60000D677E4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57CD4C42B9EF60000D677E4 /* ContentView.swift */; };
 		D57CD4C72B9EF60200D677E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D57CD4C62B9EF60200D677E4 /* Assets.xcassets */; };
@@ -37,10 +39,14 @@
 		D5C7A3582BBD718D00FCAF36 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D5C7A3572BBD718D00FCAF36 /* FirebaseFirestore */; };
 		D5C7A35A2BBD73D700FCAF36 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5C7A3592BBD73D700FCAF36 /* GoogleService-Info.plist */; };
 		D5C7A35C2BBD845D00FCAF36 /* VerifyOTPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C7A35B2BBD845D00FCAF36 /* VerifyOTPView.swift */; };
+		D5E9843A2BC49B8D007B0BC2 /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E984392BC49B8D007B0BC2 /* MapCoordinator.swift */; };
+		D5E9843D2BC4A271007B0BC2 /* DriverRouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E9843C2BC4A271007B0BC2 /* DriverRouteModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D5052B762BB5CA50007552BB /* Drivers-Log-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Drivers-Log-Info.plist"; sourceTree = SOURCE_ROOT; };
+		D5684CF12BC56842000236C6 /* TripDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailVM.swift; sourceTree = "<group>"; };
+		D5684CF32BC5701F000236C6 /* ViewRouteMapRep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouteMapRep.swift; sourceTree = "<group>"; };
 		D57CD4BF2B9EF60000D677E4 /* Drivers Log.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Drivers Log.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D57CD4C22B9EF60000D677E4 /* Drivers_LogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drivers_LogApp.swift; sourceTree = "<group>"; };
 		D57CD4C42B9EF60000D677E4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -61,6 +67,8 @@
 		D5C7A35B2BBD845D00FCAF36 /* VerifyOTPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOTPView.swift; sourceTree = "<group>"; };
 		D5C7A35D2BBD871700FCAF36 /* Drivers Log.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Drivers Log.entitlements"; sourceTree = "<group>"; };
 		D5C7A3612BBDFCFD00FCAF36 /* TestingLocation.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TestingLocation.gpx; sourceTree = "<group>"; };
+		D5E984392BC49B8D007B0BC2 /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
+		D5E9843C2BC4A271007B0BC2 /* DriverRouteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverRouteModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +100,8 @@
 			children = (
 				D5C7A33C2BBCE08E00FCAF36 /* MapView.swift */,
 				D5C7A33E2BBCE74A00FCAF36 /* DriverRouteView.swift */,
+				D5E984392BC49B8D007B0BC2 /* MapCoordinator.swift */,
+				D5684CF32BC5701F000236C6 /* ViewRouteMapRep.swift */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -100,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				D5C7A3452BBD708400FCAF36 /* SessionManager.swift */,
+				D5684CF12BC56842000236C6 /* TripDetailVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -126,10 +137,11 @@
 			children = (
 				D5C7A35D2BBD871700FCAF36 /* Drivers Log.entitlements */,
 				D5C7A3592BBD73D700FCAF36 /* GoogleService-Info.plist */,
-				D5052B7A2BB5CAD3007552BB /* ViewModels */,
 				D5052B762BB5CA50007552BB /* Drivers-Log-Info.plist */,
 				D57CD4D72B9EFDA700D677E4 /* HelperClasses */,
+				D5E9843B2BC4A257007B0BC2 /* Model */,
 				D57CD4D02B9EF6DB00D677E4 /* Views */,
+				D5052B7A2BB5CAD3007552BB /* ViewModels */,
 				D57CD4C22B9EF60000D677E4 /* Drivers_LogApp.swift */,
 				D57CD4C42B9EF60000D677E4 /* ContentView.swift */,
 				D57CD4C62B9EF60200D677E4 /* Assets.xcassets */,
@@ -200,6 +212,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D5E9843B2BC4A257007B0BC2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D5E9843C2BC4A271007B0BC2 /* DriverRouteModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,9 +313,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5684CF22BC56842000236C6 /* TripDetailVM.swift in Sources */,
 				D57CD4D42B9EF7E300D677E4 /* NewTripView.swift in Sources */,
 				D57CD4D22B9EF77A00D677E4 /* HomeView.swift in Sources */,
+				D5684CF42BC5701F000236C6 /* ViewRouteMapRep.swift in Sources */,
 				D57CD4D92B9EFDD100D677E4 /* BackButton.swift in Sources */,
+				D5E9843A2BC49B8D007B0BC2 /* MapCoordinator.swift in Sources */,
 				D57CD4E02B9F0E8000D677E4 /* TripLegendView.swift in Sources */,
 				D57CD4DB2B9EFFD000D677E4 /* TripsRecordRowView.swift in Sources */,
 				D5C7A3462BBD708400FCAF36 /* SessionManager.swift in Sources */,
@@ -305,6 +328,7 @@
 				D5C7A33D2BBCE08E00FCAF36 /* MapView.swift in Sources */,
 				D57CD4D62B9EF81C00D677E4 /* MyTripsView.swift in Sources */,
 				D5C7A35C2BBD845D00FCAF36 /* VerifyOTPView.swift in Sources */,
+				D5E9843D2BC4A271007B0BC2 /* DriverRouteModel.swift in Sources */,
 				D57CD4C32B9EF60000D677E4 /* Drivers_LogApp.swift in Sources */,
 				D5C7A33F2BBCE74A00FCAF36 /* DriverRouteView.swift in Sources */,
 			);

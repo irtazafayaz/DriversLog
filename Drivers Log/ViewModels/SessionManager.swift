@@ -12,7 +12,7 @@ import FirebaseAuth
 
 enum AuthState {
     case login
-    case home(User)
+    case home
 }
 
 final class SessionManager: ObservableObject {
@@ -25,7 +25,7 @@ final class SessionManager: ObservableObject {
             guard let self = self else { return }
             if let firebaseUser = user {
                 self.user = firebaseUser
-                self.authState = .home(firebaseUser)
+                self.authState = .home
             } else {
                 self.user = nil
                 self.goToLoginPage()
@@ -33,11 +33,11 @@ final class SessionManager: ObservableObject {
         }
     }
     
-    func getCurrentAuthUser() {
+    func getCurrentAuthUser() -> User? {
         if let user = Auth.auth().currentUser {
-            authState = .home(user)
+            return user
         } else {
-            authState = .login
+            return nil
         }
     }
     
