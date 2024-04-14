@@ -34,5 +34,18 @@ struct GoogleMapsView: UIViewRepresentable {
         polyline.strokeWidth = 8.0
         polyline.strokeColor = .blue
         polyline.map = mapView
+        
+        if let firstCoordinate = coordinates.first {
+            let firstMarker = GMSMarker(position: firstCoordinate)
+            firstMarker.icon = GMSMarker.markerImage(with: .red)
+            firstMarker.map = mapView
+        }
+        
+        if let lastCoordinate = coordinates.last {
+            let lastMarker = GMSMarker(position: lastCoordinate)
+            lastMarker.icon = GMSMarker.markerImage(with: .red)
+            lastMarker.map = mapView
+        }
+        
     }
 }

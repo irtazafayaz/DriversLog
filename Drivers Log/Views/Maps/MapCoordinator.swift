@@ -75,43 +75,26 @@ class MapCoordinator: NSObject, CLLocationManagerDelegate {
     }
     
     func saveDrivingSessionToFirebase() {
-        let endTime = Date()
+        guard let startTime = startTime else {
+            print("Start time is nil.")
+            return
+        }
         
+        let endTime = Date()
         let pathPoints: [CoordinatesModel] = locationsArray.map { location in
             return CoordinatesModel(latitude: "\(location.coordinate.latitude)", longitude: "\(location.coordinate.longitude)")
         }
         
-        // Format start and end times
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm:ss"
-        let startTimeString = dateFormatter.string(from: startTime ?? Date())
-        let endTimeString = dateFormatter.string(from: endTime)
-        
-        // Format trip date
-        dateFormatter.dateFormat = "dd MMM,yyyy"
-        let tripDateString = dateFormatter.string(from: startTime ?? Date())
-        
-        // Calculate duration
-        let duration = endTime.timeIntervalSince(startTime ?? Date())
-        let durationHours = Int(duration) / 3600
-        let durationMinutes = (Int(duration) % 3600) / 60
-        let durationSeconds = Int(duration) % 60
-        let durationString = String(format: "%02d:%02d:%02d", durationHours, durationMinutes, durationSeconds)
-        
-        // Calculate total distance in kilometers
-        let totalDistanceKilometers = String(format: "%.2f", totalDistance / 1000)
-        
-        // Create TripItem instance
         let tripItem = TripItem(
-            tripTotalDistance: totalDistanceKilometers,
-            startTime: startTimeString,
-            endTime: endTimeString,
-            duration: durationString,
-            tripDate: tripDateString,
-            pathPoints: pathPoints
+            tripTotalDistance: DateUtility.formatDistanceInKilometers(distance: totalDistance),
+            startTime: DateUtility.formatDate(date: startTime, format: "HH:mm:ss"),
+            endTime: DateUtility.formatDate(date: endTime, format: "HH:mm:ss"),
+            duration: DateUtility.formatDuration(from: startTime, to: endTime),
+            tripDate: DateUtility.formatDate(date: startTime, format: "dd MMM,yyyy"),
+            pathPoints: pathPoints,
+            dayOrNight:  DateUtility.determineDayOrNight(from: startTime)
         )
         
-        // Encode TripItem and set data in Firestore
         let databaseReference = Firestore.firestore()
         let documentReference = databaseReference.collection("drivingSessions").document()
         
@@ -123,4 +106,5 @@ class MapCoordinator: NSObject, CLLocationManagerDelegate {
             }
         }
     }
+    
 }

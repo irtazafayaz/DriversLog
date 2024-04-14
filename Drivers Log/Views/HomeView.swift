@@ -10,7 +10,8 @@ import SwiftUI
 struct HomeView: View {
     
     @EnvironmentObject var sesssionManager: SessionManager
-    
+    @ObservedObject private var viewModel = TripDetailVM()
+
     var body: some View {
         NavigationStack {
             VStack(spacing: 20) {
@@ -37,9 +38,10 @@ struct HomeView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 20))
                 })
                 
-                Button {
-                    
-                } label: {
+                NavigationLink(destination: TripsReportView(tripItems: [
+                    TripItem(tripTotalDistance: "10"),
+                    TripItem(tripTotalDistance: "20")
+                ]), label: {
                     Text("Print Report")
                         .foregroundStyle(.white)
                         .padding(.vertical, 10)
@@ -47,7 +49,7 @@ struct HomeView: View {
                         .frame(width: 200)
                         .background(.black)
                         .clipShape(RoundedRectangle(cornerRadius: 20))
-                }
+                })
                 
                 Button {
                     sesssionManager.logout()
