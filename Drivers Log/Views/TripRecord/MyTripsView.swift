@@ -9,32 +9,40 @@ import SwiftUI
 
 struct MyTripsView: View {
     
+    @EnvironmentObject var sessionManager: SessionManager
+    
     @State private var opentripDetailPage: Bool = false
     @State private var selectedTrip: TripItem?
-
-    @ObservedObject private var viewModel = TripDetailVM()
-    @EnvironmentObject var sessionManager: SessionManager
+    private(set) var trips: [TripItem]
+    
+    init(trips: [TripItem]) {
+        self.trips = trips
+    }
     
     var body: some View {
         ScrollView {
             VStack {
-                VStack {
-                    ForEach(viewModel.trips, id: \.id) { trip in
-                        TripsRecordRowView(trip: trip)
-                            .onTapGesture {
-                                selectedTrip = trip
-                                opentripDetailPage.toggle()
-                            }
+                if trips.count > 0 {
+                    VStack {
+                        ForEach(trips, id: \.id) { trip in
+                            TripsRecordRowView(trip: trip)
+                                .onTapGesture {
+                                    selectedTrip = trip
+                                    opentripDetailPage.toggle()
+                                }
+                        }
                     }
+                    Spacer()
+                } else {
+                    Spacer()
+                    Text("No Trips")
+                    Spacer()
                 }
-                Spacer()
+                
             }
-            .navigationDestination(isPresented: $opentripDetailPage, destination: { 
+            .navigationDestination(isPresented: $opentripDetailPage, destination: {
                 if let trip = selectedTrip { TripDetailView(selectedTrip: trip) }
             })
-            .onAppear {
-                viewModel.fetchTrips(sessionManager.getCurrentAuthUser()?.uid ?? "NaN")
-            }
         }
         .background(Color("app-background"))
         .navigationBarBackButtonHidden(true)
@@ -54,5 +62,5 @@ struct MyTripsView: View {
 }
 
 #Preview {
-    MyTripsView()
+    MyTripsView(trips: [])
 }

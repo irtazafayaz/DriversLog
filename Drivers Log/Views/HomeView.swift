@@ -28,7 +28,7 @@ struct HomeView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 20))
                 })
                 
-                NavigationLink(destination: MyTripsView(), label: {
+                NavigationLink(destination: MyTripsView(trips: viewModel.trips), label: {
                     Text("My Trip")
                         .foregroundStyle(.white)
                         .padding(.vertical, 10)
@@ -38,10 +38,7 @@ struct HomeView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 20))
                 })
                 
-                NavigationLink(destination: TripsReportView(tripItems: [
-                    TripItem(tripTotalDistance: "10"),
-                    TripItem(tripTotalDistance: "20")
-                ]), label: {
+                NavigationLink(destination: TripsReportView(), label: {
                     Text("Print Report")
                         .foregroundStyle(.white)
                         .padding(.vertical, 10)
@@ -66,6 +63,9 @@ struct HomeView: View {
                 Spacer()
                 
                 
+            }
+            .onAppear {
+                viewModel.fetchTrips(sesssionManager.getCurrentAuthUser()?.uid ?? "NaN")
             }
             .frame(maxWidth: .infinity)
             .background(Color("app-background"))

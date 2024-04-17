@@ -11,11 +11,15 @@ struct TripsRecordRowView: View {
     
     let trip: TripItem
     
+    private func isNight() -> Bool {
+        return trip.dayOrNight == "Day" ? false : true
+    }
+    
     var body: some View {
         VStack {
             HStack {
                 
-                Image(systemName: "moon.fill")
+                Image(systemName: isNight() ? "moon.fill" : "sun.min.fill")
                     .font(.title)
                 
                 VStack(alignment: .leading) {

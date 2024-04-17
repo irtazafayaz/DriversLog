@@ -20,12 +20,16 @@ struct TripDetailView: View {
         self.selectedTrip = selectedTrip
     }
     
+    private func isNight() -> Bool {
+        return selectedTrip.dayOrNight == "Day" ? false : true
+    }
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
                 Spacer()
                 
-                Image(systemName: "moon.fill")
+                Image(systemName: isNight() ? "moon.fill" : "sun.min.fill")
                     .font(.title)
                 Text("\(selectedTrip.tripDate)")
             }
