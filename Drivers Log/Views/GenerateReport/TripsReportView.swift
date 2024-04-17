@@ -10,8 +10,7 @@ import WebKit
 
 struct WebView: UIViewRepresentable {
     var htmlName: String
-    var data: [[String]]
-    var onPDFGenerated: (Result<URL, Error>) -> Void
+    var trips: [TripItem]
 
     func makeUIView(context: Context) -> WKWebView {
         let webView = WKWebView()
@@ -23,26 +22,23 @@ struct WebView: UIViewRepresentable {
         return webView
     }
 
-    func updateUIView(_ webView: WKWebView, context: Context) {
-        // This method intentionally left blank.
-    }
+    func updateUIView(_ webView: WKWebView, context: Context) {}
 
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self, data: data)
-    }
+    func makeCoordinator() -> Coordinator { Coordinator(self, trips: trips) }
 
     class Coordinator: NSObject, WKNavigationDelegate {
         var parent: WebView
-        var data: [[String]]
+        var trips: [TripItem]
 
-        init(_ webView: WebView, data: [[String]]) {
+        init(_ webView: WebView, trips: [TripItem]) {
             self.parent = webView
-            self.data = data
+            self.trips = trips
         }
 
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-            let jsonData = try? JSONSerialization.data(withJSONObject: data, options: [])
-            if let jsonString = String(data: jsonData!, encoding: .utf8) {
+            let encoder = JSONEncoder()
+            if let jsonData = try? encoder.encode(trips),
+               let jsonString = String(data: jsonData, encoding: .utf8) {
                 let script = "updateTable(\(jsonString));"
                 webView.evaluateJavaScript(script, completionHandler: nil)
             }
@@ -53,24 +49,15 @@ struct WebView: UIViewRepresentable {
 
 struct TripsReportView: View {
     
-    var dataArray = [["Item 1", "Item 2"], ["Item 3", "Item 4"]]
+    var trips: [TripItem]
 
     var body: some View {
         VStack {
             Text("Hello")
-            WebView(htmlName: "table", data: dataArray, onPDFGenerated: handlePDFGeneration)
+            WebView(htmlName: "table", trips: trips)
         }
     }
-    
 
-    private func handlePDFGeneration(result: Result<URL, Error>) {
-        switch result {
-        case .success(let fileURL):
-            print("PDF saved at: \(fileURL)")
-        case .failure(let error):
-            print("Error: \(error.localizedDescription)")
-        }
-    }
     
 }
 

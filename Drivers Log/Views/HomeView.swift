@@ -38,7 +38,7 @@ struct HomeView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 20))
                 })
                 
-                NavigationLink(destination: TripsReportView(), label: {
+                NavigationLink(destination: TripsReportView(trips: viewModel.trips), label: {
                     Text("Print Report")
                         .foregroundStyle(.white)
                         .padding(.vertical, 10)
