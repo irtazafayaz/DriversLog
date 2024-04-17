@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        h1 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello</h1>
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Start Location</th>
+                <th>End Location</th>
+                <th>Total Distance</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Duration</th>
+                <th>Trip Date</th>
+                <th>Weather</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Rows will be inserted here dynamically -->
+        </tbody>
+    </table>
+    <script>
+        function updateTable(data) {
+            const table = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+            table.innerHTML = ''; // Clear existing table data
+            data.forEach(item => {
+                const newRow = table.insertRow(table.rows.length);
+                insertCell(newRow, item.tripTitle);
+                insertCell(newRow, item.startLocation);
+                insertCell(newRow, item.endLocation);
+                insertCell(newRow, item.tripTotalDistance);
+                insertCell(newRow, item.startTime);
+                insertCell(newRow, item.endTime);
+                insertCell(newRow, item.duration);
+                insertCell(newRow, item.tripDate);
+                insertCell(newRow, item.dayOrNight);
+            });
+        }
+
+        function insertCell(row, text) {
+            const newCell = row.insertCell();
+            newCell.textContent = text || '-';
+        }
+    </script>
+</body>
+</html>
