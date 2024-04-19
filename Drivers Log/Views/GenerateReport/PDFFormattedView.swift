@@ -51,10 +51,77 @@ struct PDFFormattedView: View {
             // Draw a table here
             drawTable(at: CGPoint(x: margin, y: separatorY + 10), in: ctx.cgContext, contentRect: contentRect)
             
+            
+            
+            ctx.beginPage()  // Second page
+            drawAbbreviations(ctx: ctx, pageRect: pageRect, margin: margin)
+            
+            
             // This function should be filled with additional pages and content as needed
         }
         
         savePDF(data: data)
+    }
+    
+    func drawAbbreviations(ctx: UIGraphicsPDFRendererContext, pageRect: CGRect, margin: CGFloat) {
+        let startY = margin
+        let columnWidths = [100.0, 50.0, 100.0, 50.0, 100.0, 50.0].map { CGFloat($0) }
+        let rowHeight: CGFloat = 20.0
+        let startX = (pageRect.width - columnWidths.reduce(0, +)) / 2
+
+        let headers = ["Road Type", "Abb.", "Weather", "Abb.", "Traffic Density", "Abb."]
+        let data = [
+            ("Sealed", "S"), ("Wet", "W"), ("Light", "L"),
+            ("Unsealed", "U"), ("Dry", "D"), ("Medium", "M"),
+            ("Quiet Street", "Q"), ("", ""), ("Heavy", "H")
+        ]
+
+        ctx.cgContext.saveGState()
+        ctx.cgContext.translateBy(x: startX, y: startY)
+
+        // Draw headers with background
+        for (index, header) in headers.enumerated() {
+            let headerFrame = CGRect(x: CGFloat(columnWidths[0..<index].reduce(0, +)), y: 0, width: columnWidths[index], height: rowHeight)
+            ctx.cgContext.setFillColor(UIColor.darkGray.cgColor)
+            ctx.cgContext.fill(headerFrame)
+            drawText(header, in: headerFrame, withAlignment: .center, fontSize: 10, isBold: true, backgroundColor: .clear, textColor: .white)
+        }
+        
+        // Draw data rows
+        var currentY = rowHeight
+        for (index, (text, abbreviation)) in data.enumerated() {
+            let colIndex = index % 3 * 2
+            let textFrame = CGRect(x: CGFloat(columnWidths[0..<colIndex].reduce(0, +)), y: currentY, width: columnWidths[colIndex], height: rowHeight)
+            let abbrFrame = CGRect(x: CGFloat(columnWidths[0..<(colIndex + 1)].reduce(0, +)), y: currentY, width: columnWidths[colIndex + 1], height: rowHeight)
+
+            // Set background color for rows
+            ctx.cgContext.setFillColor(UIColor.lightGray.cgColor)
+            ctx.cgContext.fill(textFrame)
+            ctx.cgContext.fill(abbrFrame)
+
+            // Draw text in the respective cells
+            drawText(text, in: textFrame, withAlignment: .left, fontSize: 10, backgroundColor: .clear)
+            drawText(abbreviation, in: abbrFrame, withAlignment: .center, fontSize: 10, backgroundColor: .clear)
+
+            if (index + 1) % 3 == 0 {
+                currentY += rowHeight
+            }
+        }
+
+        ctx.cgContext.restoreGState()
+    }
+
+    
+    func drawText(_ text: String, in rect: CGRect, withAlignment alignment: NSTextAlignment, fontSize: CGFloat, isBold: Bool = false, backgroundColor: UIColor = .white, textColor: UIColor = .black) {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = alignment
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: isBold ? UIFont.boldSystemFont(ofSize: fontSize) : UIFont.systemFont(ofSize: fontSize),
+            .paragraphStyle: paragraphStyle,
+            .foregroundColor: textColor,
+            .backgroundColor: backgroundColor
+        ]
+        text.draw(in: rect, withAttributes: attributes)
     }
     
     func drawTable(at point: CGPoint, in context: CGContext, contentRect: CGRect) {
