@@ -12,7 +12,6 @@
 		D5684CF42BC5701F000236C6 /* ViewRouteMapRep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5684CF32BC5701F000236C6 /* ViewRouteMapRep.swift */; };
 		D5684CF62BC74B5A000236C6 /* ViewRouteMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5684CF52BC74B5A000236C6 /* ViewRouteMap.swift */; };
 		D5684CF82BC751C8000236C6 /* FindAddressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5684CF72BC751C8000236C6 /* FindAddressManager.swift */; };
-		D5684CFB2BCABDC4000236C6 /* TripsReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5684CFA2BCABDC4000236C6 /* TripsReportView.swift */; };
 		D5684CFD2BCC9B78000236C6 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5684CFC2BCC9B78000236C6 /* Utilities.swift */; };
 		D57CD4C32B9EF60000D677E4 /* Drivers_LogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57CD4C22B9EF60000D677E4 /* Drivers_LogApp.swift */; };
 		D57CD4C52B9EF60000D677E4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57CD4C42B9EF60000D677E4 /* ContentView.swift */; };
@@ -46,6 +45,7 @@
 		D5C7A35C2BBD845D00FCAF36 /* VerifyOTPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C7A35B2BBD845D00FCAF36 /* VerifyOTPView.swift */; };
 		D5E9843A2BC49B8D007B0BC2 /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E984392BC49B8D007B0BC2 /* MapCoordinator.swift */; };
 		D5E9843D2BC4A271007B0BC2 /* DriverRouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E9843C2BC4A271007B0BC2 /* DriverRouteModel.swift */; };
+		D5EA592C2BD27B21003569BB /* PDFFormattedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EA592B2BD27B21003569BB /* PDFFormattedView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,7 +55,6 @@
 		D5684CF32BC5701F000236C6 /* ViewRouteMapRep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouteMapRep.swift; sourceTree = "<group>"; };
 		D5684CF52BC74B5A000236C6 /* ViewRouteMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouteMap.swift; sourceTree = "<group>"; };
 		D5684CF72BC751C8000236C6 /* FindAddressManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAddressManager.swift; sourceTree = "<group>"; };
-		D5684CFA2BCABDC4000236C6 /* TripsReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsReportView.swift; sourceTree = "<group>"; };
 		D5684CFC2BCC9B78000236C6 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		D57CD4BF2B9EF60000D677E4 /* Drivers Log.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Drivers Log.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D57CD4C22B9EF60000D677E4 /* Drivers_LogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drivers_LogApp.swift; sourceTree = "<group>"; };
@@ -79,6 +78,7 @@
 		D5C7A3612BBDFCFD00FCAF36 /* TestingLocation.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TestingLocation.gpx; sourceTree = "<group>"; };
 		D5E984392BC49B8D007B0BC2 /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
 		D5E9843C2BC4A271007B0BC2 /* DriverRouteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverRouteModel.swift; sourceTree = "<group>"; };
+		D5EA592B2BD27B21003569BB /* PDFFormattedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFFormattedView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,7 +130,7 @@
 		D5684CF92BCABDAC000236C6 /* GenerateReport */ = {
 			isa = PBXGroup;
 			children = (
-				D5684CFA2BCABDC4000236C6 /* TripsReportView.swift */,
+				D5EA592B2BD27B21003569BB /* PDFFormattedView.swift */,
 			);
 			path = GenerateReport;
 			sourceTree = "<group>";
@@ -340,6 +340,7 @@
 				D5684CF22BC56842000236C6 /* TripDetailVM.swift in Sources */,
 				D57CD4D42B9EF7E300D677E4 /* NewTripView.swift in Sources */,
 				D5684CFD2BCC9B78000236C6 /* Utilities.swift in Sources */,
+				D5EA592C2BD27B21003569BB /* PDFFormattedView.swift in Sources */,
 				D57CD4D22B9EF77A00D677E4 /* HomeView.swift in Sources */,
 				D5684CF42BC5701F000236C6 /* ViewRouteMapRep.swift in Sources */,
 				D57CD4D92B9EFDD100D677E4 /* BackButton.swift in Sources */,
@@ -347,7 +348,6 @@
 				D57CD4E02B9F0E8000D677E4 /* TripLegendView.swift in Sources */,
 				D57CD4DB2B9EFFD000D677E4 /* TripsRecordRowView.swift in Sources */,
 				D5C7A3462BBD708400FCAF36 /* SessionManager.swift in Sources */,
-				D5684CFB2BCABDC4000236C6 /* TripsReportView.swift in Sources */,
 				D5684CF82BC751C8000236C6 /* FindAddressManager.swift in Sources */,
 				D57CD4DD2B9F053A00D677E4 /* TripDetailView.swift in Sources */,
 				D5C7A3422BBD700D00FCAF36 /* LoginView.swift in Sources */,

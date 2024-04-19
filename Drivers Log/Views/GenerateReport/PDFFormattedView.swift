@@ -100,10 +100,21 @@ struct PDFFormattedView: View {
 
         ctx.cgContext.restoreGState()
 
-        // Draw Declarations
-        currentY += startY + rowHeight  // Adjust startY for declarations
-        drawDeclaration(ctx: ctx, startX: startX, startY: currentY, pageRect: pageRect, title: "Declaration by Learner Driver (Compulsory)", details: "I ______________________ declare that I have completed 75 hours (4,500 minutes) of driving experience, including at least 15 hours (900 minutes) of night driving.")
+        let declarations = [
+            ("Details of driving sessions and supervisor's remarks go here.", "Declaration by Learner Driver (Compulsory): I declare that I have completed 75 hours (4,500 minutes) of driving experience, including at least 15 hours (900 minutes) of night driving."),
+            ("helo", "Declaration by Supervisor: I certify that the learner driver has completed the required hours as stated and has demonstrated competent driving skills.")
+        ]
+        
+        for (title, description) in declarations {
+            currentY += rowHeight // Space between entries
+            drawDeclaration(ctx: ctx, startX: startX, startY: currentY, pageRect: pageRect, title: title, details: description)
+            currentY += 60 // Adjust for the height of the declaration section
+        }
+        // Draw Signature Area at the Bottom
+        drawSignature(ctx: ctx, startX: startX, startY: currentY, pageRect: pageRect)
     }
+
+
 
     
     func drawDeclaration(ctx: UIGraphicsPDFRendererContext, startX: CGFloat, startY: CGFloat, pageRect: CGRect, title: String, details: String) {
@@ -116,11 +127,17 @@ struct PDFFormattedView: View {
         let detailsFrame = CGRect(x: startX, y: startY + 20, width: pageRect.width - 2 * margin, height: 40)
         drawText(details, in: detailsFrame, withAlignment: .left, fontSize: 10)
 
-        let signatureText = "Signature: ________________    Date: ________________"
-        let signatureFrame = CGRect(x: startX, y: startY + 60, width: pageRect.width - 2 * margin, height: 20)
-        drawText(signatureText, in: signatureFrame, withAlignment: .left, fontSize: 10)
+//        let signatureText = "Signature: ________________    Date: ________________"
+//        let signatureFrame = CGRect(x: startX, y: startY + 60, width: pageRect.width - 2 * margin, height: 20)
+//        drawText(signatureText, in: signatureFrame, withAlignment: .left, fontSize: 10)
     }
 
+    func drawSignature(ctx: UIGraphicsPDFRendererContext, startX: CGFloat, startY: CGFloat, pageRect: CGRect) {
+        let margin: CGFloat = 20
+        let signatureText = "Signature: ________________    Date: ________________"
+        let signatureFrame = CGRect(x: startX, y: startY, width: pageRect.width - 2 * margin, height: 20)
+        drawText(signatureText, in: signatureFrame, withAlignment: .left, fontSize: 10)
+    }
     
     func drawAbbreviations(ctx: UIGraphicsPDFRendererContext, pageRect: CGRect, margin: CGFloat) {
         let startY = margin
