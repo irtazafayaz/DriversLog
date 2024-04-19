@@ -56,12 +56,71 @@ struct PDFFormattedView: View {
             ctx.beginPage()  // Second page
             drawAbbreviations(ctx: ctx, pageRect: pageRect, margin: margin)
             
+            ctx.beginPage()  // Third page
+            drawSummaryAndDeclarations(ctx: ctx, pageRect: pageRect, margin: margin)
             
             // This function should be filled with additional pages and content as needed
         }
         
         savePDF(data: data)
     }
+    
+    func drawSummaryAndDeclarations(ctx: UIGraphicsPDFRendererContext, pageRect: CGRect, margin: CGFloat) {
+        let startX = margin
+        let startY = margin
+        let columnWidth = (pageRect.width - 2 * margin) / 3
+        let rowHeight: CGFloat = 20.0
+        
+        ctx.cgContext.saveGState()
+        ctx.cgContext.translateBy(x: startX, y: startY)
+        
+        // Draw Summary Table with headers
+        let headers = ["Driving Time", "Total Hours", "Total Distance"]
+        for (index, header) in headers.enumerated() {
+            let frame = CGRect(x: CGFloat(index) * columnWidth, y: 0, width: columnWidth, height: rowHeight)
+            ctx.cgContext.setFillColor(UIColor.darkGray.cgColor)
+            ctx.cgContext.fill(frame)
+            drawText(header, in: frame, withAlignment: .center, fontSize: 10, isBold: true, backgroundColor: .clear, textColor: .white)
+        }
+        
+        // Summary Data
+        let data = [("Day Time", "2.86h", "70.77km"), ("Night Time", "2.47h", "150.16km"), ("Total", "5.33h", "220.93km")]
+        var currentY = rowHeight
+
+        for (time, hours, distance) in data {
+            let rowItems = [time, hours, distance]
+            for (index, text) in rowItems.enumerated() {
+                let frame = CGRect(x: CGFloat(index) * columnWidth, y: currentY, width: columnWidth, height: rowHeight)
+                ctx.cgContext.setFillColor(UIColor.white.cgColor)
+                ctx.cgContext.fill(frame)
+                drawText(text, in: frame, withAlignment: .center, fontSize: 10, backgroundColor: .clear)
+            }
+            currentY += rowHeight
+        }
+
+        ctx.cgContext.restoreGState()
+
+        // Draw Declarations
+        currentY += startY + rowHeight  // Adjust startY for declarations
+        drawDeclaration(ctx: ctx, startX: startX, startY: currentY, pageRect: pageRect, title: "Declaration by Learner Driver (Compulsory)", details: "I ______________________ declare that I have completed 75 hours (4,500 minutes) of driving experience, including at least 15 hours (900 minutes) of night driving.")
+    }
+
+    
+    func drawDeclaration(ctx: UIGraphicsPDFRendererContext, startX: CGFloat, startY: CGFloat, pageRect: CGRect, title: String, details: String) {
+        let margin: CGFloat = 20
+        let titleFrame = CGRect(x: startX, y: startY, width: pageRect.width - 2 * margin, height: 20)
+        ctx.cgContext.setFillColor(UIColor.darkGray.cgColor)
+        ctx.cgContext.fill(titleFrame)
+        drawText(title, in: titleFrame, withAlignment: .center, fontSize: 10, isBold: true, backgroundColor: .clear, textColor: .white)
+
+        let detailsFrame = CGRect(x: startX, y: startY + 20, width: pageRect.width - 2 * margin, height: 40)
+        drawText(details, in: detailsFrame, withAlignment: .left, fontSize: 10)
+
+        let signatureText = "Signature: ________________    Date: ________________"
+        let signatureFrame = CGRect(x: startX, y: startY + 60, width: pageRect.width - 2 * margin, height: 20)
+        drawText(signatureText, in: signatureFrame, withAlignment: .left, fontSize: 10)
+    }
+
     
     func drawAbbreviations(ctx: UIGraphicsPDFRendererContext, pageRect: CGRect, margin: CGFloat) {
         let startY = margin
@@ -111,6 +170,7 @@ struct PDFFormattedView: View {
         ctx.cgContext.restoreGState()
     }
 
+    
     
     func drawText(_ text: String, in rect: CGRect, withAlignment alignment: NSTextAlignment, fontSize: CGFloat, isBold: Bool = false, backgroundColor: UIColor = .white, textColor: UIColor = .black) {
         let paragraphStyle = NSMutableParagraphStyle()
