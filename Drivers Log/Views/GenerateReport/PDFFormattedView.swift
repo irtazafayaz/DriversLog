@@ -6,13 +6,27 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct PDFFormattedView: View {
     
+    var trips: [TripItem]
+    
     var body: some View {
-        Button("Create PDF") {
+        
+        Button {
             createPDF()
+            
+        } label: {
+            Text("Print Report")
+                .foregroundStyle(.white)
+                .padding(.vertical, 10)
+                .padding(.horizontal, 40)
+                .frame(width: 200)
+                .background(.black)
+                .clipShape(RoundedRectangle(cornerRadius: 20))
         }
+        
     }
     
     func createPDF() {
@@ -24,8 +38,9 @@ struct PDFFormattedView: View {
         let renderer = UIGraphicsPDFRenderer(bounds: pageRect)
         
         let data = renderer.pdfData { ctx in
-            ctx.beginPage()
             
+            /// First Page
+            ctx.beginPage()
             let titleAttributes: [NSAttributedString.Key: Any] = [
                 .font: UIFont.boldSystemFont(ofSize: 18),
                 .foregroundColor: UIColor.black
@@ -48,20 +63,17 @@ struct PDFFormattedView: View {
             ctx.cgContext.setStrokeColor(UIColor.black.cgColor)
             ctx.cgContext.strokePath()
             
-            // Draw a table here
             drawTable(at: CGPoint(x: margin, y: separatorY + 10), in: ctx.cgContext, contentRect: contentRect)
             
-            
-            
-            ctx.beginPage()  // Second page
+            /// Second Page
+            ctx.beginPage()
             drawAbbreviations(ctx: ctx, pageRect: pageRect, margin: margin)
             
-            ctx.beginPage()  // Third page
+            /// Third Page
+            ctx.beginPage()
             drawSummaryAndDeclarations(ctx: ctx, pageRect: pageRect, margin: margin)
             
-            // This function should be filled with additional pages and content as needed
         }
-        
         savePDF(data: data)
     }
     
@@ -74,19 +86,17 @@ struct PDFFormattedView: View {
         ctx.cgContext.saveGState()
         ctx.cgContext.translateBy(x: startX, y: startY)
         
-        // Draw Summary Table with headers
         let headers = ["Driving Time", "Total Hours", "Total Distance"]
         for (index, header) in headers.enumerated() {
             let frame = CGRect(x: CGFloat(index) * columnWidth, y: 0, width: columnWidth, height: rowHeight)
-            ctx.cgContext.setFillColor(UIColor.darkGray.cgColor)
+            ctx.cgContext.setFillColor(UIColor.systemGreen.cgColor)
             ctx.cgContext.fill(frame)
             drawText(header, in: frame, withAlignment: .center, fontSize: 10, isBold: true, backgroundColor: .clear, textColor: .white)
         }
         
-        // Summary Data
         let data = [("Day Time", "2.86h", "70.77km"), ("Night Time", "2.47h", "150.16km"), ("Total", "5.33h", "220.93km")]
         var currentY = rowHeight
-
+        
         for (time, hours, distance) in data {
             let rowItems = [time, hours, distance]
             for (index, text) in rowItems.enumerated() {
@@ -97,9 +107,9 @@ struct PDFFormattedView: View {
             }
             currentY += rowHeight
         }
-
+        
         ctx.cgContext.restoreGState()
-
+        
         let declarations = [
             ("Details of driving sessions and supervisor's remarks go here.", "Declaration by Learner Driver (Compulsory): I declare that I have completed 75 hours (4,500 minutes) of driving experience, including at least 15 hours (900 minutes) of night driving."),
             ("helo", "Declaration by Supervisor: I certify that the learner driver has completed the required hours as stated and has demonstrated competent driving skills.")
@@ -110,28 +120,23 @@ struct PDFFormattedView: View {
             drawDeclaration(ctx: ctx, startX: startX, startY: currentY, pageRect: pageRect, title: title, details: description)
             currentY += 60 // Adjust for the height of the declaration section
         }
-        // Draw Signature Area at the Bottom
         drawSignature(ctx: ctx, startX: startX, startY: currentY, pageRect: pageRect)
     }
-
-
-
+    
+    
+    
     
     func drawDeclaration(ctx: UIGraphicsPDFRendererContext, startX: CGFloat, startY: CGFloat, pageRect: CGRect, title: String, details: String) {
         let margin: CGFloat = 20
         let titleFrame = CGRect(x: startX, y: startY, width: pageRect.width - 2 * margin, height: 20)
-        ctx.cgContext.setFillColor(UIColor.darkGray.cgColor)
+        ctx.cgContext.setFillColor(UIColor.systemGreen.cgColor)
         ctx.cgContext.fill(titleFrame)
         drawText(title, in: titleFrame, withAlignment: .center, fontSize: 10, isBold: true, backgroundColor: .clear, textColor: .white)
-
+        
         let detailsFrame = CGRect(x: startX, y: startY + 20, width: pageRect.width - 2 * margin, height: 40)
         drawText(details, in: detailsFrame, withAlignment: .left, fontSize: 10)
-
-//        let signatureText = "Signature: ________________    Date: ________________"
-//        let signatureFrame = CGRect(x: startX, y: startY + 60, width: pageRect.width - 2 * margin, height: 20)
-//        drawText(signatureText, in: signatureFrame, withAlignment: .left, fontSize: 10)
     }
-
+    
     func drawSignature(ctx: UIGraphicsPDFRendererContext, startX: CGFloat, startY: CGFloat, pageRect: CGRect) {
         let margin: CGFloat = 20
         let signatureText = "Signature: ________________    Date: ________________"
@@ -144,21 +149,21 @@ struct PDFFormattedView: View {
         let columnWidths = [100.0, 50.0, 100.0, 50.0, 100.0, 50.0].map { CGFloat($0) }
         let rowHeight: CGFloat = 20.0
         let startX = (pageRect.width - columnWidths.reduce(0, +)) / 2
-
+        
         let headers = ["Road Type", "Abb.", "Weather", "Abb.", "Traffic Density", "Abb."]
         let data = [
             ("Sealed", "S"), ("Wet", "W"), ("Light", "L"),
             ("Unsealed", "U"), ("Dry", "D"), ("Medium", "M"),
             ("Quiet Street", "Q"), ("", ""), ("Heavy", "H")
         ]
-
+        
         ctx.cgContext.saveGState()
         ctx.cgContext.translateBy(x: startX, y: startY)
-
+        
         // Draw headers with background
         for (index, header) in headers.enumerated() {
             let headerFrame = CGRect(x: CGFloat(columnWidths[0..<index].reduce(0, +)), y: 0, width: columnWidths[index], height: rowHeight)
-            ctx.cgContext.setFillColor(UIColor.darkGray.cgColor)
+            ctx.cgContext.setFillColor(UIColor.systemGreen.cgColor)
             ctx.cgContext.fill(headerFrame)
             drawText(header, in: headerFrame, withAlignment: .center, fontSize: 10, isBold: true, backgroundColor: .clear, textColor: .white)
         }
@@ -169,24 +174,24 @@ struct PDFFormattedView: View {
             let colIndex = index % 3 * 2
             let textFrame = CGRect(x: CGFloat(columnWidths[0..<colIndex].reduce(0, +)), y: currentY, width: columnWidths[colIndex], height: rowHeight)
             let abbrFrame = CGRect(x: CGFloat(columnWidths[0..<(colIndex + 1)].reduce(0, +)), y: currentY, width: columnWidths[colIndex + 1], height: rowHeight)
-
+            
             // Set background color for rows
             ctx.cgContext.setFillColor(UIColor.lightGray.cgColor)
             ctx.cgContext.fill(textFrame)
             ctx.cgContext.fill(abbrFrame)
-
+            
             // Draw text in the respective cells
             drawText(text, in: textFrame, withAlignment: .left, fontSize: 10, backgroundColor: .clear)
             drawText(abbreviation, in: abbrFrame, withAlignment: .center, fontSize: 10, backgroundColor: .clear)
-
+            
             if (index + 1) % 3 == 0 {
                 currentY += rowHeight
             }
         }
-
+        
         ctx.cgContext.restoreGState()
     }
-
+    
     
     
     func drawText(_ text: String, in rect: CGRect, withAlignment alignment: NSTextAlignment, fontSize: CGFloat, isBold: Bool = false, backgroundColor: UIColor = .white, textColor: UIColor = .black) {
@@ -217,7 +222,7 @@ struct PDFFormattedView: View {
                 .foregroundColor: UIColor.white
             ]
             let frame = CGRect(x: CGFloat(index) * columnWidth, y: 0, width: columnWidth, height: rowHeight)
-            context.setFillColor(UIColor.gray.cgColor)
+            context.setFillColor(UIColor.systemGreen.cgColor)
             context.fill(frame)
             let textRect = frame.insetBy(dx: 2, dy: 2)
             header.draw(in: textRect, withAttributes: headerAttributes)
@@ -225,6 +230,7 @@ struct PDFFormattedView: View {
         
         // Draw rows (example static data here)
         let data = [
+            ["1/1/2021", "08:00", "09:00", "1h", "10km", "Place A", "Place B", "Paved", "Sunny", "Light"],
             ["1/1/2021", "08:00", "09:00", "1h", "10km", "Place A", "Place B", "Paved", "Sunny", "Light"]
         ]
         
@@ -251,9 +257,22 @@ struct PDFFormattedView: View {
             do {
                 try data.write(to: pdfPath)
                 print("PDF created at: \(pdfPath)")
+                sharePDF(pdfPath: pdfPath)
             } catch {
                 print("Could not save PDF: \(error)")
             }
+        }
+    }
+
+    func sharePDF(pdfPath: URL) {
+        let activityViewController = UIActivityViewController(activityItems: [pdfPath], applicationActivities: nil)
+        
+        // Presenting the share sheet
+        if let topController = UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController {
+            // Ensures that iPad doesn't crash on attempting to present a full screen VC in a popover
+            activityViewController.popoverPresentationController?.sourceView = topController.view
+            
+            topController.present(activityViewController, animated: true, completion: nil)
         }
     }
 }

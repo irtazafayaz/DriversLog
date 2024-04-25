@@ -38,15 +38,7 @@ struct HomeView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 20))
                 })
                 
-                NavigationLink(destination: TripsReportView(trips: viewModel.trips), label: {
-                    Text("Print Report")
-                        .foregroundStyle(.white)
-                        .padding(.vertical, 10)
-                        .padding(.horizontal, 40)
-                        .frame(width: 200)
-                        .background(.black)
-                        .clipShape(RoundedRectangle(cornerRadius: 20))
-                })
+                PDFFormattedView(trips: viewModel.trips)
                 
                 Button {
                     sesssionManager.logout()
