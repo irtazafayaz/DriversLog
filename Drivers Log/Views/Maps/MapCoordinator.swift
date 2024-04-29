@@ -13,6 +13,8 @@ import SwiftUI
 
 class MapCoordinator: NSObject, CLLocationManagerDelegate {
     
+    @EnvironmentObject var sessionManager: SessionManager
+    
     var mapView: GMSMapView?
     var locationManager = CLLocationManager()
     var previousLocation: CLLocation?
@@ -75,6 +77,9 @@ class MapCoordinator: NSObject, CLLocationManagerDelegate {
     }
     
     func saveDrivingSessionToFirebase() {
+        
+        let uid = UserDefaults.standard.string(forKey: "user-uid") ?? "NaN"
+        
         guard let startTime = startTime else {
             print("Start time is nil.")
             return
@@ -96,7 +101,8 @@ class MapCoordinator: NSObject, CLLocationManagerDelegate {
         )
         
         let databaseReference = Firestore.firestore()
-        let documentReference = databaseReference.collection("drivingSessions").document()
+        // Adjusting the path to store data under a user-specific collection and sub-collection for trips
+        let documentReference = databaseReference.collection("user-data").document(uid).collection("trips").document()
         
         try? documentReference.setData(from: tripItem) { error in
             if let error = error {
@@ -106,5 +112,6 @@ class MapCoordinator: NSObject, CLLocationManagerDelegate {
             }
         }
     }
+
     
 }

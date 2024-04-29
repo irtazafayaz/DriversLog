@@ -26,12 +26,26 @@ final class SessionManager: ObservableObject {
             if let firebaseUser = user {
                 self.user = firebaseUser
                 self.authState = .home
+                self.saveUID(uid: firebaseUser.uid)
             } else {
                 self.user = nil
+                self.clearUID()
                 self.goToLoginPage()
             }
         }
     }
+    
+    func saveUID(uid: String) {
+            UserDefaults.standard.set(uid, forKey: "user-uid")
+        }
+        
+        func getSavedUID() -> String? {
+            UserDefaults.standard.string(forKey: "user-uid")
+        }
+        
+        func clearUID() {
+            UserDefaults.standard.removeObject(forKey: "user-uid")
+        }
     
     func getCurrentAuthUser() -> User? {
         if let user = Auth.auth().currentUser {
@@ -43,6 +57,7 @@ final class SessionManager: ObservableObject {
     
     func logout() {
         do {
+            clearUID()
             try Auth.auth().signOut()
         } catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)

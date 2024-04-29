@@ -40,6 +40,7 @@ struct MyTripsView: View {
                 }
                 
             }
+            .frame(maxWidth: .infinity)
             .navigationDestination(isPresented: $opentripDetailPage, destination: {
                 if let trip = selectedTrip { TripDetailView(selectedTrip: trip) }
             })

@@ -13,21 +13,24 @@ final class TripDetailVM: ObservableObject {
     
     @Published private(set) var trips: [TripItem] = []
     private let databaseReference = Firestore.firestore()
+    @Published var isLoading: Bool = false
     
     func fetchTrips(_ uid: String) {
-        databaseReference.collection("drivingSessions")
+        isLoading = true
+        databaseReference.collection("user-data").document(uid).collection("trips")
             .getDocuments { [weak self] snapshot, error in
                 guard let self = self else { return }
+                isLoading = false
                 guard let documents = snapshot?.documents, error == nil else {
-                    print("Error Fetching Driving Sessions")
+                    print("Error fetching trips: \(error?.localizedDescription ?? "Unknown error")")
                     return
                 }
-                let groups = documents.compactMap { document -> TripItem? in
+                let trips = documents.compactMap { document -> TripItem? in
                     try? document.data(as: TripItem.self)
                 }
-                trips = groups
-
+                self.trips = trips
             }
     }
+
     
 }

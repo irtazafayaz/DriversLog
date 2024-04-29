@@ -14,7 +14,7 @@ struct ContentView: View {
     var body: some View {
         switch sessionManager.authState {
         case .login:
-            HomeView()
+            LoginView()
                 .environmentObject(sessionManager)
         case .home:
             HomeView()

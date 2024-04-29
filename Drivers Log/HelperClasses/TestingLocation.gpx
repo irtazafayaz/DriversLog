@@ -1,22 +1,39 @@
 <?xml version="1.0"?>
 <gpx version="1.1" creator="Xcode">
-    
-    <!--
-     Provide one or more waypoints containing a latitude/longitude pair. If you provide one
-     waypoint, Xcode will simulate that specific location. If you provide multiple waypoints,
-     Xcode will simulate a route visiting each waypoint.
-     -->
+    <!-- Start Point -->
     <wpt lat="37.331705" lon="-122.030237">
-        <name>Cupertino</name>
-        
-        <!--
-         Optionally provide a time element for each waypoint. Xcode will interpolate movement
-         at a rate of speed based on the time elapsed between each waypoint. If you do not provide
-         a time element, then Xcode will use a fixed rate of speed.
-         
-         Waypoints must be sorted by time in ascending order.
-         -->
-        <time>2014-09-24T14:55:37Z</time>
+        <name>Start: Cupertino</name>
+        <time>2023-04-04T10:00:00Z</time>
     </wpt>
     
+    <!-- Waypoints across a longer route -->
+    <wpt lat="37.331" lon="-122.035">
+        <name>Checkpoint 1</name>
+        <time>2023-04-04T10:02:00Z</time>
+    </wpt>
+    <wpt lat="37.330" lon="-122.040">
+        <name>Checkpoint 2</name>
+        <time>2023-04-04T10:04:00Z</time>
+    </wpt>
+    <wpt lat="37.329" lon="-122.045">
+        <name>Checkpoint 3</name>
+        <time>2023-04-04T10:06:00Z</time>
+    </wpt>
+    <wpt lat="37.328" lon="-122.050">
+        <name>Checkpoint 4</name>
+        <time>2023-04-04T10:08:00Z</time>
+    </wpt>
+    <wpt lat="37.327" lon="-122.055">
+        <name>Checkpoint 5</name>
+        <time>2023-04-04T10:10:00Z</time>
+    </wpt>
+    <wpt lat="37.326" lon="-122.060">
+        <name>Checkpoint 6</name>
+        <time>2023-04-04T10:12:00Z</time>
+    </wpt>
+    <!-- End Point -->
+    <wpt lat="37.325" lon="-122.065">
+        <name>End: Farther from Cupertino</name>
+        <time>2023-04-04T10:14:00Z</time>
+    </wpt>
 </gpx>
