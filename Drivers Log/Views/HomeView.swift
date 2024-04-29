@@ -11,7 +11,7 @@ struct HomeView: View {
     
     @EnvironmentObject var sesssionManager: SessionManager
     @ObservedObject private var viewModel = TripDetailVM()
-
+    
     var body: some View {
         NavigationStack {
             VStack(spacing: 20) {
@@ -63,7 +63,7 @@ struct HomeView: View {
             .background(Color("app-background"))
         }
         .background(Color("app-background"))
-
+        
     }
 }
 

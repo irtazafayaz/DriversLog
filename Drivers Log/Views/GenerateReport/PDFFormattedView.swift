@@ -77,7 +77,49 @@ struct PDFFormattedView: View {
         savePDF(data: data)
     }
     
+    func totalHoursAndDistance(trips: [TripItem], filter: (TripItem) -> Bool) -> (hours: Double, distance: Double) {
+        var totalHours = 0.0
+        var totalDistance = 0.0
+
+        for trip in trips.filter(filter) {
+            if let duration = Double(trip.duration.replacingOccurrences(of: "h", with: "")),
+               let distance = Double(trip.tripTotalDistance.replacingOccurrences(of: "km", with: "")) {
+                totalHours += duration
+                totalDistance += distance
+            }
+        }
+
+        return (totalHours, totalDistance)
+    }
+
+    func formatHours(_ hours: Double) -> String {
+        return String(format: "%.2fh", hours)
+    }
+
+    func formatDistance(_ distance: Double) -> String {
+        return String(format: "%.2fkm", distance)
+    }
+
+    
+    
     func drawSummaryAndDeclarations(ctx: UIGraphicsPDFRendererContext, pageRect: CGRect, margin: CGFloat) {
+        
+        
+        let dayFilter = { (trip: TripItem) -> Bool in trip.dayOrNight == "Day" }
+        let nightFilter = { (trip: TripItem) -> Bool in trip.dayOrNight == "Night" }
+
+        let dayStats = totalHoursAndDistance(trips: trips, filter: dayFilter)
+        let nightStats = totalHoursAndDistance(trips: trips, filter: nightFilter)
+        let totalHours = dayStats.hours + nightStats.hours
+        let totalDistance = dayStats.distance + nightStats.distance
+
+        let data = [
+            ("Day Time", formatHours(dayStats.hours), formatDistance(dayStats.distance)),
+            ("Night Time", formatHours(nightStats.hours), formatDistance(nightStats.distance)),
+            ("Total", formatHours(totalHours), formatDistance(totalDistance))
+        ]
+        
+        
         let startX = margin
         let startY = margin
         let columnWidth = (pageRect.width - 2 * margin) / 3
@@ -94,7 +136,6 @@ struct PDFFormattedView: View {
             drawText(header, in: frame, withAlignment: .center, fontSize: 10, isBold: true, backgroundColor: .clear, textColor: .white)
         }
         
-        let data = [("Day Time", "2.86h", "70.77km"), ("Night Time", "2.47h", "150.16km"), ("Total", "5.33h", "220.93km")]
         var currentY = rowHeight
         
         for (time, hours, distance) in data {
@@ -207,7 +248,6 @@ struct PDFFormattedView: View {
     }
     
     func drawTable(at point: CGPoint, in context: CGContext, contentRect: CGRect) {
-        // Example of drawing a simple table
         let headers = ["Date", "Start", "Finish", "Duration", "Distance", "From", "To", "Road", "Weather", "Traffic"]
         let rowHeight: CGFloat = 20.0
         let columnWidth = (contentRect.width) / CGFloat(headers.count)
@@ -228,14 +268,22 @@ struct PDFFormattedView: View {
             header.draw(in: textRect, withAttributes: headerAttributes)
         }
         
-        // Draw rows (example static data here)
-        let data = [
-            ["1/1/2021", "08:00", "09:00", "1h", "10km", "Place A", "Place B", "Paved", "Sunny", "Light"],
-            ["1/1/2021", "08:00", "09:00", "1h", "10km", "Place A", "Place B", "Paved", "Sunny", "Light"]
-        ]
-        
-        for (rowIndex, row) in data.enumerated() {
-            for (columnIndex, item) in row.enumerated() {
+        // Draw rows dynamically based on trips data
+        for (rowIndex, trip) in trips.enumerated() {
+            let rowItems = [
+                trip.tripDate,
+                trip.startTime,
+                trip.endTime,
+                trip.duration,
+                trip.tripTotalDistance,
+                trip.startLocation,
+                trip.endLocation,
+                "Paved",
+                "Sunny",
+                "Light"
+            ]
+            
+            for (columnIndex, item) in rowItems.enumerated() {
                 let itemAttributes: [NSAttributedString.Key: Any] = [
                     .font: UIFont.systemFont(ofSize: 12),
                     .foregroundColor: UIColor.black
@@ -251,6 +299,7 @@ struct PDFFormattedView: View {
         context.restoreGState()
     }
     
+    
     func savePDF(data: Data) {
         if let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             let pdfPath = documentDirectory.appendingPathComponent("DayTimeLog2page.pdf")
@@ -263,7 +312,7 @@ struct PDFFormattedView: View {
             }
         }
     }
-
+    
     func sharePDF(pdfPath: URL) {
         let activityViewController = UIActivityViewController(activityItems: [pdfPath], applicationActivities: nil)
         
