@@ -24,10 +24,10 @@ struct MyTripsView: View {
             VStack {
                 if trips.count > 0 {
                     VStack {
-                        ForEach(trips, id: \.id) { trip in
-                            TripsRecordRowView(trip: trip)
+                        ForEach(0..<trips.count, id: \.self) { index in
+                            TripsRecordRowView(trip: trips[index])
                                 .onTapGesture {
-                                    selectedTrip = trip
+                                    selectedTrip = trips[index]
                                     opentripDetailPage.toggle()
                                 }
                         }

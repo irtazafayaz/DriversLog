@@ -78,13 +78,21 @@ struct PDFFormattedView: View {
     }
     
     func totalHoursAndDistance(trips: [TripItem], filter: (TripItem) -> Bool) -> (hours: Double, distance: Double) {
-        var totalHours = 0.0
-        var totalDistance = 0.0
+        var totalHours = 0.0000
+        var totalDistance = 0.0000
 
         for trip in trips.filter(filter) {
-            if let duration = Double(trip.duration.replacingOccurrences(of: "h", with: "")),
-               let distance = Double(trip.tripTotalDistance.replacingOccurrences(of: "km", with: "")) {
-                totalHours += duration
+            // Parse duration string "HH:mm:ss" to calculate total hours
+            let durationComponents = trip.duration.split(separator: ":").map { Double($0) ?? 0.0 }
+            if durationComponents.count == 3 {
+                let hours = durationComponents[0]
+                let minutes = durationComponents[1] / 60
+                let seconds = durationComponents[2] / 3600
+                totalHours += hours + minutes + seconds
+            }
+
+            // Use the distance directly as it's assumed to be in kilometers
+            if let distance = Double(trip.tripTotalDistance) {
                 totalDistance += distance
             }
         }
@@ -99,20 +107,18 @@ struct PDFFormattedView: View {
     func formatDistance(_ distance: Double) -> String {
         return String(format: "%.2fkm", distance)
     }
-
-    
     
     func drawSummaryAndDeclarations(ctx: UIGraphicsPDFRendererContext, pageRect: CGRect, margin: CGFloat) {
         
         
         let dayFilter = { (trip: TripItem) -> Bool in trip.dayOrNight == "Day" }
         let nightFilter = { (trip: TripItem) -> Bool in trip.dayOrNight == "Night" }
-
+        
         let dayStats = totalHoursAndDistance(trips: trips, filter: dayFilter)
         let nightStats = totalHoursAndDistance(trips: trips, filter: nightFilter)
         let totalHours = dayStats.hours + nightStats.hours
         let totalDistance = dayStats.distance + nightStats.distance
-
+        
         let data = [
             ("Day Time", formatHours(dayStats.hours), formatDistance(dayStats.distance)),
             ("Night Time", formatHours(nightStats.hours), formatDistance(nightStats.distance)),
@@ -152,8 +158,14 @@ struct PDFFormattedView: View {
         ctx.cgContext.restoreGState()
         
         let declarations = [
-            ("Details of driving sessions and supervisor's remarks go here.", "Declaration by Learner Driver (Compulsory): I declare that I have completed 75 hours (4,500 minutes) of driving experience, including at least 15 hours (900 minutes) of night driving."),
-            ("helo", "Declaration by Supervisor: I certify that the learner driver has completed the required hours as stated and has demonstrated competent driving skills.")
+            (
+                "Declaration by Learner Driver (Compulsory)",
+                "I _________________________________________ declare that I have completed 75 hours (4,500 minutes) of driving experience, including atleast 15 hours (900 minutes) of night driving."
+            ),
+            (
+                "Declaration by Qualified Supervising Driver (Optional)",
+                "I _________________________________________ declare that I have sighted the 75 hours (4,500 minutes) of driving experience, including atleast 15 hours (900 minutes) of night driving."
+            )
         ]
         
         for (title, description) in declarations {

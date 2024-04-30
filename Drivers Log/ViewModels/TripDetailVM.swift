@@ -16,11 +16,10 @@ final class TripDetailVM: ObservableObject {
     @Published var isLoading: Bool = false
     
     func fetchTrips(_ uid: String) {
-        isLoading = true
+        trips.removeAll()
         databaseReference.collection("user-data").document(uid).collection("trips")
             .getDocuments { [weak self] snapshot, error in
                 guard let self = self else { return }
-                isLoading = false
                 guard let documents = snapshot?.documents, error == nil else {
                     print("Error fetching trips: \(error?.localizedDescription ?? "Unknown error")")
                     return
@@ -29,6 +28,8 @@ final class TripDetailVM: ObservableObject {
                     try? document.data(as: TripItem.self)
                 }
                 self.trips = trips
+                print("\(#function):\(#line) — Trips")
+                print(self.trips)
             }
     }
 

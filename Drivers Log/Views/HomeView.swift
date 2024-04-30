@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeView: View {
     
     @EnvironmentObject var sesssionManager: SessionManager
-    @ObservedObject private var viewModel = TripDetailVM()
+    @StateObject private var viewModel = TripDetailVM()
     
     var body: some View {
         NavigationStack {
