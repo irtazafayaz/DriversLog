@@ -25,10 +25,7 @@
 		<string>processing</string>
 		<string>remote-notification</string>
 	</array>
-    <key>UIFileSharingEnabled</key>
-    <true/>
-    <key>LSSupportsOpeningDocumentsInPlace</key>
-    <true/>
-
+	<key>UIFileSharingEnabled</key>
+	<true/>
 </dict>
 </plist>

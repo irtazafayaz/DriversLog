@@ -24,6 +24,7 @@
 		D57CD4DB2B9EFFD000D677E4 /* TripsRecordRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57CD4DA2B9EFFD000D677E4 /* TripsRecordRowView.swift */; };
 		D57CD4DD2B9F053A00D677E4 /* TripDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57CD4DC2B9F053A00D677E4 /* TripDetailView.swift */; };
 		D57CD4E02B9F0E8000D677E4 /* TripLegendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57CD4DF2B9F0E8000D677E4 /* TripLegendView.swift */; };
+		D57E00422BE298AA00C07250 /* PDF+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57E00412BE298AA00C07250 /* PDF+Extension.swift */; };
 		D5BB06E72BBAEBC400C0DE5D /* GoogleMaps in Frameworks */ = {isa = PBXBuildFile; productRef = D5BB06E62BBAEBC400C0DE5D /* GoogleMaps */; };
 		D5BB06E92BBAEBC400C0DE5D /* GoogleMapsBase in Frameworks */ = {isa = PBXBuildFile; productRef = D5BB06E82BBAEBC400C0DE5D /* GoogleMapsBase */; };
 		D5BB06EB2BBAEBC400C0DE5D /* GoogleMapsCore in Frameworks */ = {isa = PBXBuildFile; productRef = D5BB06EA2BBAEBC400C0DE5D /* GoogleMapsCore */; };
@@ -68,6 +69,7 @@
 		D57CD4DA2B9EFFD000D677E4 /* TripsRecordRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsRecordRowView.swift; sourceTree = "<group>"; };
 		D57CD4DC2B9F053A00D677E4 /* TripDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailView.swift; sourceTree = "<group>"; };
 		D57CD4DF2B9F0E8000D677E4 /* TripLegendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripLegendView.swift; sourceTree = "<group>"; };
+		D57E00412BE298AA00C07250 /* PDF+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PDF+Extension.swift"; sourceTree = "<group>"; };
 		D5C7A33C2BBCE08E00FCAF36 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		D5C7A33E2BBCE74A00FCAF36 /* DriverRouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverRouteView.swift; sourceTree = "<group>"; };
 		D5C7A3412BBD700D00FCAF36 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				D5EA592B2BD27B21003569BB /* PDFFormattedView.swift */,
+				D57E00412BE298AA00C07250 /* PDF+Extension.swift */,
 			);
 			path = GenerateReport;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5684CF22BC56842000236C6 /* TripDetailVM.swift in Sources */,
+				D57E00422BE298AA00C07250 /* PDF+Extension.swift in Sources */,
 				D57CD4D42B9EF7E300D677E4 /* NewTripView.swift in Sources */,
 				D5684CFD2BCC9B78000236C6 /* Utilities.swift in Sources */,
 				D5EA592C2BD27B21003569BB /* PDFFormattedView.swift in Sources */,
@@ -498,6 +502,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Drivers-Log-Info.plist";
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "It wants to access your location";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "It wants to access your location";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "It wants to access your location";
@@ -506,6 +511,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -536,6 +542,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Drivers-Log-Info.plist";
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "It wants to access your location";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "It wants to access your location";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "It wants to access your location";
@@ -544,6 +551,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
