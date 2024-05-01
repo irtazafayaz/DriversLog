@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import UIKit
+import SwiftUI
 
 class DateUtility {
     static let dateFormatter: DateFormatter = {
@@ -39,4 +41,13 @@ class DateUtility {
         }
     }
     
+}
+
+class ColorUtility {
+    static func customGreenColor() -> UIColor {
+        let redValue: CGFloat = 189.0 / 255.0
+        let greenValue: CGFloat = 240.0 / 255.0
+        let blueValue: CGFloat = 227.0 / 255.0
+        return UIColor(red: redValue, green: greenValue, blue: blueValue, alpha: 1.0)
+    }
 }

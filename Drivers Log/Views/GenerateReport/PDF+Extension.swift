@@ -16,7 +16,7 @@ extension PDFFormattedView {
         let titleFrame = CGRect(x: startX, y: startY, width: pageRect.width - 2 * margin, height: 80)
         let detailsFrame = CGRect(x: startX, y: startY + 20, width: pageRect.width - 2 * margin, height: 40)
 
-        ctx.cgContext.setFillColor(UIColor.systemGreen.cgColor)
+        ctx.cgContext.setFillColor(ColorUtility.customGreenColor().cgColor)
         ctx.cgContext.fill(titleFrame)
         ctx.cgContext.setStrokeColor(UIColor.black.cgColor)
         ctx.cgContext.stroke(titleFrame)
@@ -33,10 +33,10 @@ extension PDFFormattedView {
         let margin: CGFloat = 20
         let signatureText = "Signature: ________________    Date: ________________"
         let signatureFrame = CGRect(x: startX, y: startY, width: pageRect.width - 2 * margin, height: 20)
-        ctx.cgContext.setFillColor(UIColor.systemGreen.cgColor)
+        ctx.cgContext.setFillColor(ColorUtility.customGreenColor().cgColor)
         ctx.cgContext.fill(signatureFrame)
 
-        drawText(signatureText, in: signatureFrame, withAlignment: .left, fontSize: 10, backgroundColor: .systemGreen)
+        drawText(signatureText, in: signatureFrame, withAlignment: .left, fontSize: 10, backgroundColor: ColorUtility.customGreenColor())
     }
     
     func drawText(_ text: String, in rect: CGRect, withAlignment alignment: NSTextAlignment, fontSize: CGFloat, isBold: Bool = false, backgroundColor: UIColor = .white, textColor: UIColor = .black) {

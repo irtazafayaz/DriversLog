@@ -8,6 +8,8 @@
 import SwiftUI
 import UIKit
 
+
+
 struct PDFFormattedView: View {
     
     var trips: [TripItem]
@@ -92,7 +94,7 @@ struct PDFFormattedView: View {
                 .foregroundColor: UIColor.black
             ]
             let frame = CGRect(x: CGFloat(index) * columnWidth, y: 0, width: columnWidth, height: rowHeight)
-            context.setFillColor(UIColor.systemGreen.cgColor)
+            context.setFillColor(ColorUtility.customGreenColor().cgColor)
             context.fill(frame)
             let textRect = frame.insetBy(dx: 2, dy: 2)
             header.draw(in: textRect, withAttributes: headerAttributes)
@@ -157,7 +159,7 @@ struct PDFFormattedView: View {
         // Draw headers with background
         for (index, header) in headers.enumerated() {
             let headerFrame = CGRect(x: CGFloat(columnWidths[0..<index].reduce(0, +)), y: 0, width: columnWidths[index], height: rowHeight)
-            ctx.cgContext.setFillColor(UIColor.systemGreen.cgColor)
+            ctx.cgContext.setFillColor(ColorUtility.customGreenColor().cgColor)
             ctx.cgContext.fill(headerFrame)
             drawText(header, in: headerFrame, withAlignment: .center, fontSize: 10, isBold: true, backgroundColor: .clear, textColor: .black)
             ctx.cgContext.setStrokeColor(UIColor.black.cgColor)
@@ -223,7 +225,7 @@ struct PDFFormattedView: View {
         let headers = ["Driving Time", "Total Hours", "Total Distance"]
         for (index, header) in headers.enumerated() {
             let frame = CGRect(x: CGFloat(index) * columnWidth, y: 0, width: columnWidth, height: rowHeight)
-            ctx.cgContext.setFillColor(UIColor.systemGreen.cgColor)
+            ctx.cgContext.setFillColor(ColorUtility.customGreenColor().cgColor)
             ctx.cgContext.fill(frame)
             drawText(header, in: frame, withAlignment: .center, fontSize: 10, isBold: true, backgroundColor: .clear, textColor: .black)
             ctx.cgContext.setStrokeColor(UIColor.black.cgColor)
