@@ -89,13 +89,17 @@ struct PDFFormattedView: View {
         for (index, header) in headers.enumerated() {
             let headerAttributes: [NSAttributedString.Key: Any] = [
                 .font: UIFont.boldSystemFont(ofSize: 12),
-                .foregroundColor: UIColor.white
+                .foregroundColor: UIColor.black
             ]
             let frame = CGRect(x: CGFloat(index) * columnWidth, y: 0, width: columnWidth, height: rowHeight)
             context.setFillColor(UIColor.systemGreen.cgColor)
             context.fill(frame)
             let textRect = frame.insetBy(dx: 2, dy: 2)
             header.draw(in: textRect, withAttributes: headerAttributes)
+            
+            // Add black border
+            context.setStrokeColor(UIColor.black.cgColor)
+            context.stroke(frame)
         }
         
         // Draw rows dynamically based on trips data
@@ -123,12 +127,16 @@ struct PDFFormattedView: View {
                 context.fill(frame)
                 let textRect = frame.insetBy(dx: 2, dy: 2)
                 item.draw(in: textRect, withAttributes: itemAttributes)
+                
+                // Add black border
+                context.setStrokeColor(UIColor.black.cgColor)
+                context.stroke(frame)
             }
         }
         
         context.restoreGState()
     }
-    
+
 
     func drawAbbreviations(ctx: UIGraphicsPDFRendererContext, pageRect: CGRect, margin: CGFloat) {
         let startY = margin
@@ -151,7 +159,7 @@ struct PDFFormattedView: View {
             let headerFrame = CGRect(x: CGFloat(columnWidths[0..<index].reduce(0, +)), y: 0, width: columnWidths[index], height: rowHeight)
             ctx.cgContext.setFillColor(UIColor.systemGreen.cgColor)
             ctx.cgContext.fill(headerFrame)
-            drawText(header, in: headerFrame, withAlignment: .center, fontSize: 10, isBold: true, backgroundColor: .clear, textColor: .white)
+            drawText(header, in: headerFrame, withAlignment: .center, fontSize: 10, isBold: true, backgroundColor: .clear, textColor: .black)
             ctx.cgContext.setStrokeColor(UIColor.black.cgColor)
             ctx.cgContext.stroke(headerFrame)
         }
@@ -164,7 +172,7 @@ struct PDFFormattedView: View {
             let abbrFrame = CGRect(x: CGFloat(columnWidths[0..<(colIndex + 1)].reduce(0, +)), y: currentY, width: columnWidths[colIndex + 1], height: rowHeight)
             
             // Set background color for rows
-            ctx.cgContext.setFillColor(UIColor.lightGray.cgColor)
+            ctx.cgContext.setFillColor(UIColor.clear.cgColor)
             ctx.cgContext.fill(textFrame)
             ctx.cgContext.fill(abbrFrame)
             
@@ -217,7 +225,9 @@ struct PDFFormattedView: View {
             let frame = CGRect(x: CGFloat(index) * columnWidth, y: 0, width: columnWidth, height: rowHeight)
             ctx.cgContext.setFillColor(UIColor.systemGreen.cgColor)
             ctx.cgContext.fill(frame)
-            drawText(header, in: frame, withAlignment: .center, fontSize: 10, isBold: true, backgroundColor: .clear, textColor: .white)
+            drawText(header, in: frame, withAlignment: .center, fontSize: 10, isBold: true, backgroundColor: .clear, textColor: .black)
+            ctx.cgContext.setStrokeColor(UIColor.black.cgColor)
+            ctx.cgContext.stroke(frame)
         }
         
         var currentY = rowHeight
@@ -229,6 +239,8 @@ struct PDFFormattedView: View {
                 ctx.cgContext.setFillColor(UIColor.white.cgColor)
                 ctx.cgContext.fill(frame)
                 drawText(text, in: frame, withAlignment: .center, fontSize: 10, backgroundColor: .clear)
+                ctx.cgContext.setStrokeColor(UIColor.black.cgColor)
+                ctx.cgContext.stroke(frame)
             }
             currentY += rowHeight
         }
