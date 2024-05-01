@@ -26,11 +26,13 @@ struct TripItem: Identifiable, Codable {
     var tripDate            : String = "16 Dec,2024"
     var pathPoints          : [CoordinatesModel]?
     var dayOrNight          : String = "Day"
-    
-    
+    var multilane           : String = "ML"
+    var roadType            : String = "Busy Road"
+    var trafficDensity      : String = "Heavy"
+    var weather             : String = "Wet"
     
     private enum CodingKeys: String, CodingKey {
-        case tripTitle, startLocation, endLocation, tripTotalDistance, startTime, endTime, duration, tripDate, pathPoints, dayOrNight
+        case tripTitle, startLocation, endLocation, tripTotalDistance, startTime, endTime, duration, tripDate, pathPoints, dayOrNight, multilane, roadType, trafficDensity, weather
     }
 
     func encode(to encoder: Encoder) throws {
@@ -45,6 +47,10 @@ struct TripItem: Identifiable, Codable {
         try container.encode(tripDate, forKey: .tripDate)
         try container.encode(pathPoints, forKey: .pathPoints)
         try container.encode(dayOrNight, forKey: .dayOrNight)
+        try container.encode(multilane, forKey: .multilane)
+        try container.encode(roadType, forKey: .roadType)
+        try container.encode(trafficDensity, forKey: .trafficDensity)
+        try container.encode(weather, forKey: .weather)
     }
 
     init(from decoder: Decoder) throws {
@@ -60,6 +66,10 @@ struct TripItem: Identifiable, Codable {
         tripDate = try container.decode(String.self, forKey: .tripDate)
         pathPoints = try container.decodeIfPresent([CoordinatesModel].self, forKey: .pathPoints)
         dayOrNight = try container.decode(String.self, forKey: .dayOrNight)
+        multilane = try container.decode(String.self, forKey: .multilane)
+        roadType = try container.decode(String.self, forKey: .roadType)
+        trafficDensity = try container.decode(String.self, forKey: .trafficDensity)
+        weather = try container.decode(String.self, forKey: .weather)
     }
     
     init(
@@ -69,7 +79,11 @@ struct TripItem: Identifiable, Codable {
         duration: String,
         tripDate: String,
         pathPoints: [CoordinatesModel]?,
-        dayOrNight: String
+        dayOrNight: String,
+        multilane: String,
+        roadType: String,
+        trafficDensity: String,
+        weather: String
     ) {
         self.tripTotalDistance = tripTotalDistance
         self.startTime = startTime
@@ -78,6 +92,26 @@ struct TripItem: Identifiable, Codable {
         self.tripDate = tripDate
         self.pathPoints = pathPoints
         self.dayOrNight = dayOrNight
+        self.multilane = multilane
+        self.roadType = roadType
+        self.trafficDensity = trafficDensity
+        self.weather = weather
+    }
+    
+    init(
+        tripTotalDistance: String,
+        startTime: String,
+        endTime: String,
+        duration: String,
+        tripDate: String,
+        pathPoints: [CoordinatesModel]?
+    ) {
+        self.tripTotalDistance = tripTotalDistance
+        self.startTime = startTime
+        self.endTime = endTime
+        self.duration = duration
+        self.tripDate = tripDate
+        self.pathPoints = pathPoints
     }
     
 }

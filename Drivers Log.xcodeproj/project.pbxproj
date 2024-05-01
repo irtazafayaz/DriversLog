@@ -25,6 +25,7 @@
 		D57CD4DD2B9F053A00D677E4 /* TripDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57CD4DC2B9F053A00D677E4 /* TripDetailView.swift */; };
 		D57CD4E02B9F0E8000D677E4 /* TripLegendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57CD4DF2B9F0E8000D677E4 /* TripLegendView.swift */; };
 		D57E00422BE298AA00C07250 /* PDF+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57E00412BE298AA00C07250 /* PDF+Extension.swift */; };
+		D57E00442BE2B84D00C07250 /* ChooseLegendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57E00432BE2B84D00C07250 /* ChooseLegendView.swift */; };
 		D5BB06E72BBAEBC400C0DE5D /* GoogleMaps in Frameworks */ = {isa = PBXBuildFile; productRef = D5BB06E62BBAEBC400C0DE5D /* GoogleMaps */; };
 		D5BB06E92BBAEBC400C0DE5D /* GoogleMapsBase in Frameworks */ = {isa = PBXBuildFile; productRef = D5BB06E82BBAEBC400C0DE5D /* GoogleMapsBase */; };
 		D5BB06EB2BBAEBC400C0DE5D /* GoogleMapsCore in Frameworks */ = {isa = PBXBuildFile; productRef = D5BB06EA2BBAEBC400C0DE5D /* GoogleMapsCore */; };
@@ -70,6 +71,7 @@
 		D57CD4DC2B9F053A00D677E4 /* TripDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailView.swift; sourceTree = "<group>"; };
 		D57CD4DF2B9F0E8000D677E4 /* TripLegendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripLegendView.swift; sourceTree = "<group>"; };
 		D57E00412BE298AA00C07250 /* PDF+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PDF+Extension.swift"; sourceTree = "<group>"; };
+		D57E00432BE2B84D00C07250 /* ChooseLegendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLegendView.swift; sourceTree = "<group>"; };
 		D5C7A33C2BBCE08E00FCAF36 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		D5C7A33E2BBCE74A00FCAF36 /* DriverRouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverRouteView.swift; sourceTree = "<group>"; };
 		D5C7A3412BBD700D00FCAF36 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				D57CD4D32B9EF7E300D677E4 /* NewTripView.swift */,
+				D57E00432BE2B84D00C07250 /* ChooseLegendView.swift */,
 			);
 			path = StartTrip;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				D57E00422BE298AA00C07250 /* PDF+Extension.swift in Sources */,
 				D57CD4D42B9EF7E300D677E4 /* NewTripView.swift in Sources */,
 				D5684CFD2BCC9B78000236C6 /* Utilities.swift in Sources */,
+				D57E00442BE2B84D00C07250 /* ChooseLegendView.swift in Sources */,
 				D5EA592C2BD27B21003569BB /* PDFFormattedView.swift in Sources */,
 				D57CD4D22B9EF77A00D677E4 /* HomeView.swift in Sources */,
 				D5684CF42BC5701F000236C6 /* ViewRouteMapRep.swift in Sources */,

@@ -23,9 +23,9 @@ struct MapView: UIViewRepresentable {
         coordinator.startLocationUpdates()
     }
 
-    func stopMoving() {
+    func stopMoving() -> TripItem? {
         let coordinator = makeCoordinator()
-        coordinator.stopLocationUpdates()
+        return coordinator.stopLocationUpdates()
     }
 
     func makeUIView(context: Context) -> GMSMapView {

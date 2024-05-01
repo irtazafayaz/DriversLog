@@ -31,9 +31,9 @@ class MapCoordinator: NSObject, CLLocationManagerDelegate {
         previousLocation = nil
     }
     
-    func stopLocationUpdates() {
+    func stopLocationUpdates() -> TripItem? {
         locationManager.stopUpdatingLocation()
-        saveDrivingSessionToFirebase()
+        return getTripDetails()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -76,13 +76,11 @@ class MapCoordinator: NSObject, CLLocationManagerDelegate {
         }
     }
     
-    func saveDrivingSessionToFirebase() {
-        
-        let uid = UserDefaults.standard.string(forKey: "user-uid") ?? "NaN"
+    func getTripDetails() -> TripItem? {
         
         guard let startTime = startTime else {
             print("Start time is nil.")
-            return
+            return nil
         }
         
         let endTime = Date()
@@ -96,21 +94,10 @@ class MapCoordinator: NSObject, CLLocationManagerDelegate {
             endTime: DateUtility.formatDate(date: endTime, format: "HH:mm:ss"),
             duration: DateUtility.formatDuration(from: startTime, to: endTime),
             tripDate: DateUtility.formatDate(date: startTime, format: "dd MMM,yyyy"),
-            pathPoints: pathPoints,
-            dayOrNight:  DateUtility.determineDayOrNight(from: startTime)
+            pathPoints: pathPoints
         )
         
-        let databaseReference = Firestore.firestore()
-        // Adjusting the path to store data under a user-specific collection and sub-collection for trips
-        let documentReference = databaseReference.collection("user-data").document(uid).collection("trips").document()
-        
-        try? documentReference.setData(from: tripItem) { error in
-            if let error = error {
-                print("Data could not be saved: \(error).")
-            } else {
-                print("Data saved successfully!")
-            }
-        }
+        return tripItem
     }
 
     

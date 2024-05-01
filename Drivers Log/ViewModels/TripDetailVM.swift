@@ -17,7 +17,7 @@ final class TripDetailVM: ObservableObject {
     
     func fetchTrips(_ uid: String) {
         trips.removeAll()
-        databaseReference.collection("user-data").document(uid).collection("trips")
+        databaseReference.collection("users").document(uid).collection("trips")
             .getDocuments { [weak self] snapshot, error in
                 guard let self = self else { return }
                 guard let documents = snapshot?.documents, error == nil else {

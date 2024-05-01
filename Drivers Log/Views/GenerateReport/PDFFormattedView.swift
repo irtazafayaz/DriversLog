@@ -114,9 +114,9 @@ struct PDFFormattedView: View {
                 trip.tripTotalDistance,
                 trip.startLocation,
                 trip.endLocation,
-                "Paved",
-                "Sunny",
-                "Light"
+                trip.roadType,
+                trip.weather,
+                trip.trafficDensity
             ]
             
             for (columnIndex, item) in rowItems.enumerated() {

@@ -9,8 +9,11 @@ import SwiftUI
 import CoreLocation
 
 struct DriverRouteView: View {
+    
     @State private var totalDistance: CLLocationDistance = 0
     @State private var mapView = MapView(totalDistance: .constant(0))
+    @State private var openLegendSelectionPage = false
+    @State private var selectedTrip: TripItem?
 
     var body: some View {
         VStack {
@@ -30,7 +33,8 @@ struct DriverRouteView: View {
                 .cornerRadius(10)
 
                 Button("Stop Moving") {
-                    mapView.stopMoving()
+                    selectedTrip = mapView.stopMoving()
+                    openLegendSelectionPage.toggle()
                 }
                 .padding()
                 .background(Color.red)
@@ -38,6 +42,11 @@ struct DriverRouteView: View {
                 .cornerRadius(10)
             }
         }
+        .navigationDestination(isPresented: $openLegendSelectionPage, destination: {
+            if let trip = selectedTrip {
+                ChooseLegendView(tripInfo: trip)
+            }
+        })
     }
 }
 
