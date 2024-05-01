@@ -39,6 +39,21 @@ extension PDFFormattedView {
         drawText(signatureText, in: signatureFrame, withAlignment: .left, fontSize: 10, backgroundColor: ColorUtility.customGreenColor())
     }
     
+    func drawWarningTable(ctx: UIGraphicsPDFRendererContext, startX: CGFloat, startY: CGFloat, pageRect: CGRect, title: String, details: String) {
+        
+        let margin: CGFloat = 20
+        let titleFrame = CGRect(x: startX, y: startY, width: pageRect.width - 2 * margin, height: 60)
+        let detailsFrame = CGRect(x: startX, y: startY + 20, width: pageRect.width - 2 * margin, height: 40)
+
+        ctx.cgContext.setStrokeColor(UIColor.black.cgColor)
+        ctx.cgContext.stroke(titleFrame)
+        
+        drawText(title, in: titleFrame, withAlignment: .center, fontSize: 10, isBold: true, backgroundColor: .clear, textColor: .red)
+        drawText(details, in: detailsFrame, withAlignment: .center, fontSize: 10, backgroundColor: .clear)
+        
+
+    }
+    
     func drawText(_ text: String, in rect: CGRect, withAlignment alignment: NSTextAlignment, fontSize: CGFloat, isBold: Bool = false, backgroundColor: UIColor = .white, textColor: UIColor = .black) {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = alignment

@@ -267,6 +267,32 @@ struct PDFFormattedView: View {
             drawDeclaration(ctx: ctx, startX: startX, startY: currentY, pageRect: pageRect, title: title, details: description)
             currentY += 100
         }
+        
+        drawWarningTable(ctx: ctx, startX: startX, startY: currentY, pageRect: pageRect, title: "Warning - heavy penalties apply for false entries", details: "Motor Vehicles Act 1959 - Section 135 (1)\n A person must not furnishing information or compiling a record pursuant to this act make, nor include in the record, a statement that is false or misleading in a material particular. Maximum penalty: $5,000 or imprisonment for 6 months.")
+        
+        
+        drawText(
+            "Learner's Permit Holder",
+            in: CGRect(x: startX, y: currentY + 80, width: pageRect.width - 2 * 20, height: 20),
+            withAlignment: .left,
+            fontSize: 10, isBold: true, backgroundColor: .clear, textColor: .black
+        )
+        
+        drawText(
+            "Name: Elroy Jordan Peters",
+            in: CGRect(x: startX, y: currentY + 100, width: pageRect.width - 2 * 20, height: 20),
+            withAlignment: .left,
+            fontSize: 10, isBold: true, backgroundColor: .clear, textColor: .black
+        )
+        
+        drawText(
+            "Permit#: FS5137",
+            in: CGRect(x: startX, y: currentY + 120, width: pageRect.width - 2 * 20, height: 20),
+            withAlignment: .left,
+            fontSize: 10, isBold: true, backgroundColor: .clear, textColor: .black
+        )
+
+        
     }
     
     
