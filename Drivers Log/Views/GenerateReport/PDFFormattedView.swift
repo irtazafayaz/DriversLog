@@ -258,12 +258,13 @@ struct PDFFormattedView: View {
             )
         ]
         
+        currentY += 100
+        
         for (title, description) in declarations {
-            currentY += rowHeight // Space between entries
+            currentY += rowHeight
             drawDeclaration(ctx: ctx, startX: startX, startY: currentY, pageRect: pageRect, title: title, details: description)
-            currentY += 60 // Adjust for the height of the declaration section
+            currentY += 100
         }
-        drawSignature(ctx: ctx, startX: startX, startY: currentY, pageRect: pageRect)
     }
     
     

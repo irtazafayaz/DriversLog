@@ -15,18 +15,29 @@ extension PDFFormattedView {
         let titleFrame = CGRect(x: startX, y: startY, width: pageRect.width - 2 * margin, height: 20)
         ctx.cgContext.setFillColor(UIColor.systemGreen.cgColor)
         ctx.cgContext.fill(titleFrame)
-        drawText(title, in: titleFrame, withAlignment: .center, fontSize: 10, isBold: true, backgroundColor: .clear, textColor: .white)
+        drawText(title, in: titleFrame, withAlignment: .center, fontSize: 10, isBold: true, backgroundColor: .clear, textColor: .black)
         
         let detailsFrame = CGRect(x: startX, y: startY + 20, width: pageRect.width - 2 * margin, height: 40)
-        drawText(details, in: detailsFrame, withAlignment: .left, fontSize: 10)
+        ctx.cgContext.setFillColor(UIColor.systemGreen.cgColor)
+        ctx.cgContext.fill(detailsFrame)
+        drawText(details, in: detailsFrame, withAlignment: .left, fontSize: 10, backgroundColor: .clear)
+
+        // Add signature section directly below the details section
+        let signatureStartY = startY + 60
+        drawSignature(ctx: ctx, startX: startX, startY: signatureStartY, pageRect: pageRect)
     }
-    
+
     func drawSignature(ctx: UIGraphicsPDFRendererContext, startX: CGFloat, startY: CGFloat, pageRect: CGRect) {
         let margin: CGFloat = 20
         let signatureText = "Signature: ________________    Date: ________________"
         let signatureFrame = CGRect(x: startX, y: startY, width: pageRect.width - 2 * margin, height: 20)
-        drawText(signatureText, in: signatureFrame, withAlignment: .left, fontSize: 10)
+        ctx.cgContext.setFillColor(UIColor.systemGreen.cgColor)
+        ctx.cgContext.fill(signatureFrame)
+
+        drawText(signatureText, in: signatureFrame, withAlignment: .left, fontSize: 10, backgroundColor: .systemGreen)
     }
+
+
     
     func drawText(_ text: String, in rect: CGRect, withAlignment alignment: NSTextAlignment, fontSize: CGFloat, isBold: Bool = false, backgroundColor: UIColor = .white, textColor: UIColor = .black) {
         let paragraphStyle = NSMutableParagraphStyle()
