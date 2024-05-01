@@ -11,20 +11,22 @@ import UIKit
 extension PDFFormattedView {
     
     func drawDeclaration(ctx: UIGraphicsPDFRendererContext, startX: CGFloat, startY: CGFloat, pageRect: CGRect, title: String, details: String) {
+        
         let margin: CGFloat = 20
-        let titleFrame = CGRect(x: startX, y: startY, width: pageRect.width - 2 * margin, height: 20)
+        let titleFrame = CGRect(x: startX, y: startY, width: pageRect.width - 2 * margin, height: 80)
+        let detailsFrame = CGRect(x: startX, y: startY + 20, width: pageRect.width - 2 * margin, height: 40)
+
         ctx.cgContext.setFillColor(UIColor.systemGreen.cgColor)
         ctx.cgContext.fill(titleFrame)
-        drawText(title, in: titleFrame, withAlignment: .center, fontSize: 10, isBold: true, backgroundColor: .clear, textColor: .black)
+        ctx.cgContext.setStrokeColor(UIColor.black.cgColor)
+        ctx.cgContext.stroke(titleFrame)
         
-        let detailsFrame = CGRect(x: startX, y: startY + 20, width: pageRect.width - 2 * margin, height: 40)
-        ctx.cgContext.setFillColor(UIColor.systemGreen.cgColor)
-        ctx.cgContext.fill(detailsFrame)
+        drawText(title, in: titleFrame, withAlignment: .center, fontSize: 10, isBold: true, backgroundColor: .clear, textColor: .black)
         drawText(details, in: detailsFrame, withAlignment: .left, fontSize: 10, backgroundColor: .clear)
-
-        // Add signature section directly below the details section
+        
         let signatureStartY = startY + 60
         drawSignature(ctx: ctx, startX: startX, startY: signatureStartY, pageRect: pageRect)
+
     }
 
     func drawSignature(ctx: UIGraphicsPDFRendererContext, startX: CGFloat, startY: CGFloat, pageRect: CGRect) {
@@ -36,8 +38,6 @@ extension PDFFormattedView {
 
         drawText(signatureText, in: signatureFrame, withAlignment: .left, fontSize: 10, backgroundColor: .systemGreen)
     }
-
-
     
     func drawText(_ text: String, in rect: CGRect, withAlignment alignment: NSTextAlignment, fontSize: CGFloat, isBold: Bool = false, backgroundColor: UIColor = .white, textColor: UIColor = .black) {
         let paragraphStyle = NSMutableParagraphStyle()
@@ -50,9 +50,6 @@ extension PDFFormattedView {
         ]
         text.draw(in: rect, withAttributes: attributes)
     }
-    
-
-    
     
     func savePDF(data: Data) {
         if let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {

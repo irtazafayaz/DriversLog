@@ -258,7 +258,7 @@ struct PDFFormattedView: View {
             )
         ]
         
-        currentY += 100
+        currentY += 50
         
         for (title, description) in declarations {
             currentY += rowHeight
