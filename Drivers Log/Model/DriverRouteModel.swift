@@ -9,8 +9,8 @@ import Foundation
 import FirebaseFirestore
 
 struct CoordinatesModel: Codable {
-    let latitude: String
-    let longitude: String
+    let latitude: Double
+    let longitude: Double
 }
 
 struct TripItem: Identifiable, Codable {

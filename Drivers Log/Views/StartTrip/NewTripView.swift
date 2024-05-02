@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseFunctions
 
 struct NewTripView: View {
     
@@ -35,7 +36,15 @@ struct NewTripView: View {
                 .frame(maxWidth: .infinity, minHeight: 50)
 
             Button {
-                startTripButtonTapped.toggle()
+                
+                sendOtp { success in
+                    if success {
+                        print("OTP SENT")
+                        startTripButtonTapped.toggle()
+                    }
+                }
+                
+                //startTripButtonTapped.toggle()
             } label: {
                 Text("Send OTP")
                     .foregroundStyle(.white)
@@ -50,7 +59,7 @@ struct NewTripView: View {
             
         }
         .navigationDestination(isPresented: $startTripButtonTapped, destination: {
-            DriverRouteView()
+            VerifyOTPView(uid: $supervisorMobileNo)
         })
         .padding()
         .background(Color("app-background"))
@@ -66,6 +75,28 @@ struct NewTripView: View {
                         .foregroundStyle(.white)
                 }
             })
+        }
+    }
+    
+    private func sendOtp(completion: @escaping (Bool) -> Void) {
+        let functions = Functions.functions()
+        let data = ["phoneNumber": supervisorMobileNo]
+        
+        functions.httpsCallable("sendOtp").call(data) { result, error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    print("Failed to send OTP: \(error.localizedDescription)")
+                    completion(false)
+                    return
+                }
+                
+                if let status = (result?.data as? [String: Any])?["status"] as? String, status == "pending" {
+                    // Assuming 'pending' means OTP sent successfully.
+                    completion(true)
+                } else {
+                    completion(false)
+                }
+            }
         }
     }
 }

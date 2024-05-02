@@ -85,7 +85,7 @@ class MapCoordinator: NSObject, CLLocationManagerDelegate {
         
         let endTime = Date()
         let pathPoints: [CoordinatesModel] = locationsArray.map { location in
-            return CoordinatesModel(latitude: "\(location.coordinate.latitude)", longitude: "\(location.coordinate.longitude)")
+            return CoordinatesModel(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         }
         
         let tripItem = TripItem(

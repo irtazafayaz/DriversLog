@@ -173,7 +173,7 @@ struct TripDetailView: View {
             TripLegendView()
         })
         .navigationDestination(isPresented: $showMapView, destination: {
-            if let coordinates = selectedTrip.pathPoints?.map({ CLLocationCoordinate2D(latitude: Double($0.latitude) ?? 0.0, longitude: Double($0.longitude) ?? 0.0) }) {
+            if let coordinates = selectedTrip.pathPoints?.map({ CLLocationCoordinate2D(latitude: $0.latitude, longitude: $0.longitude) }) {
                 ViewRouteMap(coordinates: coordinates)
             }
         })

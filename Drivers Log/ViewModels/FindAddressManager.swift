@@ -29,9 +29,9 @@ final class FindAddressManager: ObservableObject {
     }
     
     private func geocode(coordinate: CoordinatesModel?, completion: @escaping (String) -> Void) {
-        guard let coordinate = coordinate,
-              let latitude = Double(coordinate.latitude),
-              let longitude = Double(coordinate.longitude) else { return }
+        guard let coordinate = coordinate else { return }
+        let latitude = coordinate.latitude
+        let longitude = coordinate.longitude
         
         let geocoder = GMSGeocoder()
         let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
