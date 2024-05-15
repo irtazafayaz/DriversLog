@@ -115,7 +115,6 @@ struct ChooseLegendView: View {
         tripInfo.multilane = isMultiLanedRoad ? "ML" : ""
         
         let databaseReference = Firestore.firestore()
-        // Adjusting the path to store data under a user-specific collection and sub-collection for trips
         let documentReference = databaseReference.collection("users").document(uid).collection("trips").document()
         
         try? documentReference.setData(from: tripInfo) { error in
@@ -123,12 +122,36 @@ struct ChooseLegendView: View {
                 print("Data could not be saved: \(error).")
             } else {
                 print("Data saved successfully!")
+                NavigationUtil.popToRootView()
             }
         }
     }
     
 }
 
-//#Preview {
-//    ChooseLegendView(tripInfo: Trip)
-//}
+// MARK: To pop back to the intial view
+struct NavigationUtil {
+    static func popToRootView(animated: Bool = false) {
+        findNavigationController(viewController: UIApplication.shared.connectedScenes.flatMap { ($0 as? UIWindowScene)?.windows ?? [] }.first { $0.isKeyWindow }?.rootViewController)?.popToRootViewController(animated: animated)
+    }
+    
+    static func findNavigationController(viewController: UIViewController?) -> UINavigationController? {
+        guard let viewController = viewController else {
+            return nil
+        }
+        
+        if let navigationController = viewController as? UITabBarController {
+            return findNavigationController(viewController: navigationController.selectedViewController)
+        }
+        
+        if let navigationController = viewController as? UINavigationController {
+            return navigationController
+        }
+        
+        for childViewController in viewController.children {
+            return findNavigationController(viewController: childViewController)
+        }
+        
+        return nil
+    }
+}
