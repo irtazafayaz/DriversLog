@@ -10,8 +10,8 @@ import FirebaseFunctions
 
 struct NewTripView: View {
     
-    @State private var supervisorPermitText: String = ""
-    @State private var supervisorMobileNo: String = ""
+    @State private var supervisorPermitText: String = "4234234"
+    @State private var supervisorMobileNo: String = "+61466264930"
     @State private var startTripButtonTapped: Bool = false
     
     var body: some View {
@@ -59,7 +59,7 @@ struct NewTripView: View {
             
         }
         .navigationDestination(isPresented: $startTripButtonTapped, destination: {
-            VerifyOTPView(uid: $supervisorMobileNo)
+            VerifySupOTPView(phoneNumber: $supervisorMobileNo)
         })
         .padding()
         .background(Color("app-background"))

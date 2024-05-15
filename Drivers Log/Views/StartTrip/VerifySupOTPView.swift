@@ -67,7 +67,7 @@ struct VerifySupOTPView: View {
         let functions = Functions.functions()
         let data = ["phoneNumber": phoneNumber, "code": code]
         
-        functions.httpsCallable("verifyOTP").call(data) { result, error in
+        functions.httpsCallable("verifyOtp").call(data) { result, error in
             DispatchQueue.main.async {
                 if let error = error {
                     print("Failed to send OTP: \(error.localizedDescription)")
