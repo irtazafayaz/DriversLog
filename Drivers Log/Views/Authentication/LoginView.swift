@@ -69,6 +69,9 @@ struct LoginView: View {
                     
                     Spacer()
                     
+                    Text("Version \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")")
+                        .font(.footnote)
+                        .foregroundColor(.gray)
                     
                 }
                 .padding()

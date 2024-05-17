@@ -55,7 +55,9 @@ struct HomeView: View {
                     
                     Spacer()
                     
-                    
+                    Text("Version \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")")
+                        .font(.footnote)
+                        .foregroundColor(.gray)
                 }
                 .onAppear {
                     viewModel.fetchTrips(sesssionManager.getCurrentAuthUser()?.uid ?? "NaN")
@@ -81,5 +83,5 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
+    HomeView().environmentObject(SessionManager())
 }
