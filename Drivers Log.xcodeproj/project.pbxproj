@@ -13,6 +13,8 @@
 		D5684CF62BC74B5A000236C6 /* ViewRouteMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5684CF52BC74B5A000236C6 /* ViewRouteMap.swift */; };
 		D5684CF82BC751C8000236C6 /* FindAddressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5684CF72BC751C8000236C6 /* FindAddressManager.swift */; };
 		D5684CFD2BCC9B78000236C6 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5684CFC2BCC9B78000236C6 /* Utilities.swift */; };
+		D56EA8122C0342AA00A196BE /* ToastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56EA8112C0342AA00A196BE /* ToastManager.swift */; };
+		D56EA8152C0342EA00A196BE /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56EA8142C0342EA00A196BE /* Toast.swift */; };
 		D57CD4C32B9EF60000D677E4 /* Drivers_LogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57CD4C22B9EF60000D677E4 /* Drivers_LogApp.swift */; };
 		D57CD4C52B9EF60000D677E4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57CD4C42B9EF60000D677E4 /* ContentView.swift */; };
 		D57CD4C72B9EF60200D677E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D57CD4C62B9EF60200D677E4 /* Assets.xcassets */; };
@@ -60,6 +62,8 @@
 		D5684CF52BC74B5A000236C6 /* ViewRouteMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouteMap.swift; sourceTree = "<group>"; };
 		D5684CF72BC751C8000236C6 /* FindAddressManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAddressManager.swift; sourceTree = "<group>"; };
 		D5684CFC2BCC9B78000236C6 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		D56EA8112C0342AA00A196BE /* ToastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastManager.swift; sourceTree = "<group>"; };
+		D56EA8142C0342EA00A196BE /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		D57CD4BF2B9EF60000D677E4 /* Drivers Log.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Drivers Log.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D57CD4C22B9EF60000D677E4 /* Drivers_LogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drivers_LogApp.swift; sourceTree = "<group>"; };
 		D57CD4C42B9EF60000D677E4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 				D5C7A3452BBD708400FCAF36 /* SessionManager.swift */,
 				D5684CF12BC56842000236C6 /* TripDetailVM.swift */,
 				D5684CF72BC751C8000236C6 /* FindAddressManager.swift */,
+				D56EA8112C0342AA00A196BE /* ToastManager.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -142,6 +147,14 @@
 				D57E00412BE298AA00C07250 /* PDF+Extension.swift */,
 			);
 			path = GenerateReport;
+			sourceTree = "<group>";
+		};
+		D56EA8132C0342DC00A196BE /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D56EA8142C0342EA00A196BE /* Toast.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		D57CD4B62B9EF60000D677E4 = {
@@ -190,11 +203,12 @@
 		D57CD4D02B9EF6DB00D677E4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D56EA8132C0342DC00A196BE /* Common */,
 				D5684CF92BCABDAC000236C6 /* GenerateReport */,
-				D5C7A3402BBD6FFF00FCAF36 /* Authentication */,
 				D5052B772BB5CA70007552BB /* Maps */,
-				D57CD4E12B9F33CC00D677E4 /* StartTrip */,
 				D57CD4DE2B9F0D5000D677E4 /* TripRecord */,
+				D57CD4E12B9F33CC00D677E4 /* StartTrip */,
+				D5C7A3402BBD6FFF00FCAF36 /* Authentication */,
 				D57CD4D12B9EF77A00D677E4 /* HomeView.swift */,
 			);
 			path = Views;
@@ -364,6 +378,8 @@
 				D57CD4DB2B9EFFD000D677E4 /* TripsRecordRowView.swift in Sources */,
 				D5C7A3462BBD708400FCAF36 /* SessionManager.swift in Sources */,
 				D5684CF82BC751C8000236C6 /* FindAddressManager.swift in Sources */,
+				D56EA8122C0342AA00A196BE /* ToastManager.swift in Sources */,
+				D56EA8152C0342EA00A196BE /* Toast.swift in Sources */,
 				D57CD4DD2B9F053A00D677E4 /* TripDetailView.swift in Sources */,
 				D5C7A3422BBD700D00FCAF36 /* LoginView.swift in Sources */,
 				D57CD4C52B9EF60000D677E4 /* ContentView.swift in Sources */,
@@ -527,7 +543,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jasonpeters.driverslog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -567,7 +583,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jasonpeters.driverslog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

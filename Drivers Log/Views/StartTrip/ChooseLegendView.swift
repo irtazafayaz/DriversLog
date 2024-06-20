@@ -109,6 +109,7 @@ struct ChooseLegendView: View {
     func saveSettings() {
         let uid = UserDefaults.standard.string(forKey: "user-uid") ?? "NaN"
         tripInfo.dayOrNight = time
+        tripInfo.tripTitle = UserDefaults.standard.tripTitle
         tripInfo.roadType = road
         tripInfo.trafficDensity = traffic
         tripInfo.weather = weather

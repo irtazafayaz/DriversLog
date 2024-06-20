@@ -10,8 +10,8 @@ import FirebaseFunctions
 
 struct NewTripView: View {
     
-    @State private var supervisorPermitText: String = "4234234"
-    @State private var supervisorMobileNo: String = "+61466264930"
+    @State private var supervisorPermitText: String = ""
+    @State private var supervisorMobileNo: String = ""
     @State private var startTripButtonTapped: Bool = false
     
     var body: some View {
@@ -80,7 +80,8 @@ struct NewTripView: View {
     
     private func sendOtp(completion: @escaping (Bool) -> Void) {
         let functions = Functions.functions()
-        let data = ["phoneNumber": supervisorMobileNo]
+        let trimmedPhoneNumber = String(supervisorMobileNo.dropFirst())
+        let data = ["phoneNumber": "+923104189309"]
         
         functions.httpsCallable("sendOtp").call(data) { result, error in
             DispatchQueue.main.async {
@@ -95,6 +96,7 @@ struct NewTripView: View {
                     completion(true)
                 } else {
                     completion(false)
+                    print("Failed to send OTP: \(result?.data)")
                 }
             }
         }

@@ -27,6 +27,7 @@ final class TripDetailVM: ObservableObject {
                 let trips = documents.compactMap { document -> TripItem? in
                     try? document.data(as: TripItem.self)
                 }
+                UserDefaults.standard.tripTitle = "Trip #\(trips.count + 1)"
                 self.trips = trips
                 print("\(#function):\(#line) — Trips")
                 print(self.trips)

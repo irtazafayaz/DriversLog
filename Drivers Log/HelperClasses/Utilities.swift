@@ -51,3 +51,14 @@ class ColorUtility {
         return UIColor(red: redValue, green: greenValue, blue: blueValue, alpha: 1.0)
     }
 }
+
+extension UserDefaults {
+    var tripTitle: String {
+        get {
+            UserDefaults.standard.string(forKey: "tripTitle") ?? "Trip #1"
+        } set {
+            UserDefaults.standard.setValue(newValue, forKey: "tripTitle")
+
+        }
+    }
+}
