@@ -7,13 +7,15 @@
 
 import SwiftUI
 import FirebaseFunctions
+import Firebase
 
 struct NewTripView: View {
     
     @State private var supervisorPermitText: String = ""
     @State private var supervisorMobileNo: String = ""
     @State private var startTripButtonTapped: Bool = false
-    
+    @State private var uid: String = ""
+
     var body: some View {
         VStack {
             
@@ -34,15 +36,10 @@ struct NewTripView: View {
                         .stroke(Color.black, lineWidth: 1)
                 )
                 .frame(maxWidth: .infinity, minHeight: 50)
-
+            
             Button {
                 
-                sendOtp { success in
-                    if success {
-                        print("OTP SENT")
-                        startTripButtonTapped.toggle()
-                    }
-                }
+                sendOtp()
                 
                 //startTripButtonTapped.toggle()
             } label: {
@@ -59,7 +56,7 @@ struct NewTripView: View {
             
         }
         .navigationDestination(isPresented: $startTripButtonTapped, destination: {
-            VerifySupOTPView(phoneNumber: $supervisorMobileNo)
+            VerifySupOTPView(phoneNumber: $supervisorMobileNo, uid: $uid)
         })
         .padding()
         .background(Color("app-background"))
@@ -78,28 +75,40 @@ struct NewTripView: View {
         }
     }
     
-    private func sendOtp(completion: @escaping (Bool) -> Void) {
-        let functions = Functions.functions()
+    private func sendOtp() {
         let trimmedPhoneNumber = String(supervisorMobileNo.dropFirst())
-        let data = ["phoneNumber": "+923104189309"]
-        
-        functions.httpsCallable("sendOtp").call(data) { result, error in
-            DispatchQueue.main.async {
-                if let error = error {
-                    print("Failed to send OTP: \(error.localizedDescription)")
-                    completion(false)
-                    return
-                }
-                
-                if let status = (result?.data as? [String: Any])?["status"] as? String, status == "pending" {
-                    // Assuming 'pending' means OTP sent successfully.
-                    completion(true)
-                } else {
-                    completion(false)
-                    print("Failed to send OTP: \(result?.data)")
-                }
+        Auth.auth().settings?.isAppVerificationDisabledForTesting = false
+        PhoneAuthProvider.provider().verifyPhoneNumber("+923104189309", uiDelegate: nil) { (id, err) in
+            if err != nil {
+                print("Error \(String(describing: err))")
+            } else {
+                self.uid = id ?? "NaN"
+                startTripButtonTapped.toggle()
+
             }
         }
+        
+        //        let functions = Functions.functions()
+        //        let trimmedPhoneNumber = String(supervisorMobileNo.dropFirst())
+        //        let data = ["phoneNumber": "+923104189309"]
+        //
+        //        functions.httpsCallable("sendOtp").call(data) { result, error in
+        //            DispatchQueue.main.async {
+        //                if let error = error {
+        //                    print("Failed to send OTP: \(error.localizedDescription)")
+        //                    completion(false)
+        //                    return
+        //                }
+        //
+        //                if let status = (result?.data as? [String: Any])?["status"] as? String, status == "pending" {
+        //                    // Assuming 'pending' means OTP sent successfully.
+        //                    completion(true)
+        //                } else {
+        //                    completion(false)
+        //                    print("Failed to send OTP: \(result?.data)")
+        //                }
+        //            }
+        //        }
     }
 }
 

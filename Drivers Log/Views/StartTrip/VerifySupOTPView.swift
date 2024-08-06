@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseFunctions
+import Firebase
 
 struct VerifySupOTPView: View {
     
@@ -14,9 +15,8 @@ struct VerifySupOTPView: View {
     @State private var code: String = ""
     @State private var openMap: Bool = false
     @State private var isLoading: Bool = false
-    
-    @EnvironmentObject var sessionManager: SessionManager
-    
+    @Binding var uid: String
+
     var body: some View {
         ZStack {
             VStack {
@@ -72,25 +72,39 @@ struct VerifySupOTPView: View {
     }
     
     private func verifyOTP(completion: @escaping (Bool) -> Void) {
-        isLoading = true
-        let functions = Functions.functions()
-        let data = ["phoneNumber": phoneNumber, "code": code]
         
-        functions.httpsCallable("verifyOtp").call(data) { result, error in
-            DispatchQueue.main.async {
-                isLoading = false
-                if let error = error {
-                    print("Failed to send OTP: \(error.localizedDescription)")
-                    completion(false)
-                    return
-                } else {
-                    openMap = true
-                }
-                
-                
-                
+        let credential = PhoneAuthProvider.provider().credential(withVerificationID: self.uid, verificationCode: self.code)
+        Auth.auth().signIn(with: credential) { (res, err) in
+            isLoading = false
+            if err != nil {
+                print("wrong code")
+            } else {
+                print("res \(String(describing: res))")
+                openMap.toggle()
+//                            sessionManager.authState = .home
             }
         }
+        
+        
+//        isLoading = true
+//        let functions = Functions.functions()
+//        let data = ["phoneNumber": phoneNumber, "code": code]
+//        
+//        functions.httpsCallable("verifyOtp").call(data) { result, error in
+//            DispatchQueue.main.async {
+//                isLoading = false
+//                if let error = error {
+//                    print("Failed to send OTP: \(error.localizedDescription)")
+//                    completion(false)
+//                    return
+//                } else {
+//                    openMap = true
+//                }
+//                
+//                
+//                
+//            }
+//        }
     }
     
 }

@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct MyTripsView: View {
-    
-    @EnvironmentObject var sessionManager: SessionManager
-    
+        
     @State private var opentripDetailPage: Bool = false
     @State private var selectedTrip: TripItem?
     private(set) var trips: [TripItem]

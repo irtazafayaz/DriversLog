@@ -42,15 +42,15 @@ struct LoginView: View {
                     
                     Button {
                         
-                        if phoneNumber.count != 10 {
+                        if phoneNumber.count == 10 {
                             error = MyError.someError
                             showAlert = true
                         } else {
                             isLoading = true
                             
                             let trimmedPhoneNumber = String(phoneNumber.dropFirst())
-                            Auth.auth().settings?.isAppVerificationDisabledForTesting = true
-                            PhoneAuthProvider.provider().verifyPhoneNumber(self.code + trimmedPhoneNumber, uiDelegate: nil) { (id, err) in
+                            Auth.auth().settings?.isAppVerificationDisabledForTesting = false
+                            PhoneAuthProvider.provider().verifyPhoneNumber("+923104189309", uiDelegate: nil) { (id, err) in
                                 isLoading = false
                                 if err != nil {
                                     print("Error \(String(describing: err))")

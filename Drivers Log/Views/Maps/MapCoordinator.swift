@@ -12,9 +12,7 @@ import Firebase
 import SwiftUI
 
 class MapCoordinator: NSObject, CLLocationManagerDelegate {
-    
-    @EnvironmentObject var sessionManager: SessionManager
-    
+        
     var mapView: GMSMapView?
     var locationManager = CLLocationManager()
     var previousLocation: CLLocation?

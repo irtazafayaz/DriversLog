@@ -9,17 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @ObservedObject var sessionManager = SessionManager()
-
     var body: some View {
-        switch sessionManager.authState {
-        case .login:
-            LoginView()
-                .environmentObject(sessionManager)
-        case .home:
-            HomeView()
-                .environmentObject(sessionManager)
-        }
+        LoginView()
     }
 }
 

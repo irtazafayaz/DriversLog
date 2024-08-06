@@ -36,16 +36,16 @@ final class SessionManager: ObservableObject {
     }
     
     func saveUID(uid: String) {
-            UserDefaults.standard.set(uid, forKey: "user-uid")
-        }
-        
-        func getSavedUID() -> String? {
-            UserDefaults.standard.string(forKey: "user-uid")
-        }
-        
-        func clearUID() {
-            UserDefaults.standard.removeObject(forKey: "user-uid")
-        }
+        UserDefaults.standard.set(uid, forKey: "user-uid")
+    }
+    
+    func getSavedUID() -> String? {
+        UserDefaults.standard.string(forKey: "user-uid")
+    }
+    
+    func clearUID() {
+        UserDefaults.standard.removeObject(forKey: "user-uid")
+    }
     
     func getCurrentAuthUser() -> User? {
         if let user = Auth.auth().currentUser {
@@ -63,7 +63,7 @@ final class SessionManager: ObservableObject {
             print("Error signing out: %@", signOutError)
         }
     }
-
+    
     
     func goToLoginPage() {
         DispatchQueue.main.async {

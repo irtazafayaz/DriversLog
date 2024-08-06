@@ -34,6 +34,7 @@
 		D5BB06E92BBAEBC400C0DE5D /* GoogleMapsBase in Frameworks */ = {isa = PBXBuildFile; productRef = D5BB06E82BBAEBC400C0DE5D /* GoogleMapsBase */; };
 		D5BB06EB2BBAEBC400C0DE5D /* GoogleMapsCore in Frameworks */ = {isa = PBXBuildFile; productRef = D5BB06EA2BBAEBC400C0DE5D /* GoogleMapsCore */; };
 		D5BB06ED2BBAEBC400C0DE5D /* GoogleMapsM4B in Frameworks */ = {isa = PBXBuildFile; productRef = D5BB06EC2BBAEBC400C0DE5D /* GoogleMapsM4B */; };
+		D5C6D1A22C2A0D0B00CC6988 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C6D1A12C2A0D0B00CC6988 /* NetworkManager.swift */; };
 		D5C7A33B2BBCDFB500FCAF36 /* GooglePlaces in Frameworks */ = {isa = PBXBuildFile; productRef = D5C7A33A2BBCDFB500FCAF36 /* GooglePlaces */; };
 		D5C7A33D2BBCE08E00FCAF36 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C7A33C2BBCE08E00FCAF36 /* MapView.swift */; };
 		D5C7A33F2BBCE74A00FCAF36 /* DriverRouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C7A33E2BBCE74A00FCAF36 /* DriverRouteView.swift */; };
@@ -79,6 +80,7 @@
 		D57E00412BE298AA00C07250 /* PDF+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PDF+Extension.swift"; sourceTree = "<group>"; };
 		D57E00432BE2B84D00C07250 /* ChooseLegendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLegendView.swift; sourceTree = "<group>"; };
 		D57E00492BE2EF2E00C07250 /* VerifySupOTPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifySupOTPView.swift; sourceTree = "<group>"; };
+		D5C6D1A12C2A0D0B00CC6988 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		D5C7A33C2BBCE08E00FCAF36 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		D5C7A33E2BBCE74A00FCAF36 /* DriverRouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverRouteView.swift; sourceTree = "<group>"; };
 		D5C7A3412BBD700D00FCAF36 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -132,10 +134,11 @@
 		D5052B7A2BB5CAD3007552BB /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				D5C7A3452BBD708400FCAF36 /* SessionManager.swift */,
+				D56EA8112C0342AA00A196BE /* ToastManager.swift */,
 				D5684CF12BC56842000236C6 /* TripDetailVM.swift */,
 				D5684CF72BC751C8000236C6 /* FindAddressManager.swift */,
-				D56EA8112C0342AA00A196BE /* ToastManager.swift */,
+				D5C7A3452BBD708400FCAF36 /* SessionManager.swift */,
+				D5C6D1A12C2A0D0B00CC6988 /* NetworkManager.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 				D57CD4D62B9EF81C00D677E4 /* MyTripsView.swift in Sources */,
 				D5C7A35C2BBD845D00FCAF36 /* VerifyOTPView.swift in Sources */,
 				D5684CF62BC74B5A000236C6 /* ViewRouteMap.swift in Sources */,
+				D5C6D1A22C2A0D0B00CC6988 /* NetworkManager.swift in Sources */,
 				D5E9843D2BC4A271007B0BC2 /* DriverRouteModel.swift in Sources */,
 				D57CD4C32B9EF60000D677E4 /* Drivers_LogApp.swift in Sources */,
 				D5C7A33F2BBCE74A00FCAF36 /* DriverRouteView.swift in Sources */,

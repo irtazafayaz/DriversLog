@@ -13,8 +13,8 @@ struct VerifyOTPView: View {
     @Binding var uid: String
     @State private var code: String = ""
     @State private var isLoading: Bool = false
-    @EnvironmentObject var sessionManager: SessionManager
-    
+    @State private var openHomePage: Bool = false
+
     var body: some View {
         ZStack {
             VStack {
@@ -42,7 +42,9 @@ struct VerifyOTPView: View {
                             print("wrong code")
                         } else {
                             print("res \(String(describing: res))")
-                            sessionManager.authState = .home
+                            NetworkManager.shared.user = res?.user
+                            openHomePage.toggle()
+//                            sessionManager.authState = .home
                         }
                     }
                     
@@ -68,6 +70,9 @@ struct VerifyOTPView: View {
                 ProgressView().tint(.white)
             }
         }
+        .navigationDestination(isPresented: $openHomePage, destination: {
+            HomeView()
+        })
         
     }
 }
